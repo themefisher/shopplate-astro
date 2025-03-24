@@ -126,6 +126,11 @@ if (searchValue || brand || minPrice || maxPrice || category || tag) {
 
 const categories = await getCollections();
 const vendors = await getVendors({});
+// can filter coregories and tags
+// console.log(categories[0].handle);
+
+
+
 
 const tags = [
   ...new Set(

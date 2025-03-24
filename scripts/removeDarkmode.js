@@ -34,7 +34,7 @@ const path = require("path");
   function deleteAsset(asset) {
     try {
       fs.unlinkSync(asset);
-      console.log(`${path.basename(asset)} deleted successfully!`);
+      // console.log(`${path.basename(asset)} deleted successfully!`);
     } catch (error) {
       console.error(`${asset} not found`);
     }

@@ -1,5 +1,6 @@
 ---
 import FeaturedProducts from "@/components/FeaturedProducts.astro";
+import TestimonialsFade,{sampleTestimonialsData} from "@/components/promo/testimonialsFade";
 import config from "@/config/config.json";
 import CollectionsSlider from "@/functional-components/CollectionsSlider";
 import Base from "@/layouts/Base.astro";
@@ -8,6 +9,7 @@ import CallToAction from "@/partials/CallToAction.astro";
 import HeroSlider from "src/layouts/functional-components/HeroSlider";
 
 const { collections } = config.shopify;
+
 
 // Fetch slider images for the HeroSlider
 const sliderImages = await getCollectionProducts({
@@ -55,4 +57,11 @@ const { products: featuredProducts } = await getCollectionProducts({
   </section>
 
   <CallToAction />
+  <div class="mt-5 mb-10">
+    <TestimonialsFade 
+      pageHeaderBgImg={"https://images.unsplash.com/photo-1519642918688-7e43b19245d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2676&q=80"} 
+      pageHeaderMinVh="50vh"
+      data={sampleTestimonialsData}
+    />
+  </div>
 </Base>

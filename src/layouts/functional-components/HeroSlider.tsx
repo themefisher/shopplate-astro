@@ -6,6 +6,8 @@ import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 const HeroSlider = ({ products }: { products: Product[] }) => {
+
+  // console.log(products)
   return (
     <>
       <Swiper
@@ -21,11 +23,11 @@ const HeroSlider = ({ products }: { products: Product[] }) => {
             <div className="row items-center px-7 xl:px-16">
               <div className="sm:col-12 lg:col-6 order-2 lg:order-0">
                 <div className="text-center py-10 lg:py-0">
-                  {item?.description && (
+                  {/* {item?.description && (
                     <p className="mb-2 lg:mb-3 text-text-light dark:text-darkmode-text-light font-medium md:text-xl">
                       {item.description}
                     </p>
-                  )}
+                  )} */}
                   <div className="row">
                     <h1 className="mb-4 lg:mb-10 col-10 sm:col-8 lg:col-12 mx-auto">
                       {item.title}

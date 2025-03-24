@@ -8,7 +8,7 @@
     "logo": "/images/logo.png",
     "logo_darkmode": "/images/logo-darkmode.png",
     "logo_width": "150",
-    "logo_height": "33",
+    "logo_height": "60",
     "logo_text": "Astrofront"
   },
 
@@ -38,11 +38,11 @@
   },
 
   "shopify": {
-    "currencySymbol": "৳",
-    "currencyCode": "BDT",
+    "currencySymbol": "$",
+    "currencyCode": "USD",
     "collections": {
-      "hero_slider": "hidden-homepage-carousel",
-      "featured_products": "featured-products"
+      "hero_slider": "homeKit-hubs",
+      "featured_products": "homeKit-hubs"
     }
   }
 }

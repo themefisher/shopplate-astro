@@ -1,5 +1,7 @@
 ---
 import FeaturedProducts from "@/components/FeaturedProducts.astro";
+import TestimonialsFade from "@/components/promo/testimonialsFade";
+import ReviewSummaryChart from "@/components/reviews/reviewSummaryChart";
 import config from "@/config/config.json";
 import { AddToCart } from "@/functional-components/cart/AddToCart";
 import ProductGallery from "@/functional-components/product/ProductGallery";
@@ -11,7 +13,8 @@ import Base from "@/layouts/Base.astro";
 import { getProduct, getProductRecommendations } from "@/lib/shopify";
 import type { CollectionEntry } from "astro:content";
 import { getEntry } from "astro:content";
-
+import data from '../../../public/data.json';
+import JudgeMeReviews from "@/components/JudgeMeReviews.astro";
 const { slug } = Astro.params;
 const product = await getProduct(slug as string);
 
@@ -36,12 +39,21 @@ const {
   options,
   variants,
   tags,
+
 } = product;
 
 const relatedProducts = await getProductRecommendations(id);
 const defaultVariantId = variants.length > 0 ? variants[0].id : undefined;
 
+// filter reviews with ID 01
+// let productReviews = data.reviews.filter(x => x.productID == "01");
 const { currencySymbol } = config.shopify;
+// JudgeMe configuration
+const shopDomain = import.meta.env.JUDGEME_SHOP_DOMAIN; // e.g. "your-store.myshopify.com"
+const apiToken = import.meta.env.JUDGEME_API_TOKEN;
+
+// console.log("product id "+ product.id);
+
 ---
 
 <Base>
@@ -165,7 +177,16 @@ const { currencySymbol } = config.shopify;
       </section>
     )
   }
+     <!-- <div class=" container my-5">
+      <ReviewSummaryChart reviews = {productReviews}/>
+    </div> -->
 
+    <JudgeMeReviews 
+    productId={id}
+    shopDomain={shopDomain}
+    apiToken={apiToken}
+    limit={10}
+  />
   {/* Recommended Products section  */}
   <section class="section">
     <div class="container">

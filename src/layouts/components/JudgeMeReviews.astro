@@ -1,0 +1,78 @@
+---
+import ReviewComment from "./reviews/reviewComment";
+
+interface Props {
+  productId: string;
+  shopDomain: string;
+  apiToken: string;
+  limit?: number;
+}
+
+const { productId, shopDomain, apiToken, limit = 5 } = Astro.props;
+
+// Fetch reviews from Judge.me API
+const fetchJudgeMeReviews = async () => {
+  try {
+    const apiUrl = `https://judge.me/api/v1/reviews?api_token=${apiToken}&shop_domain=${shopDomain}&external_product_id=${productId}&per_page=${limit}`;
+    const response = await fetch(apiUrl);
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch reviews: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data.reviews || [];
+  } catch (error) {
+    console.error("Error fetching JudgeMe reviews:", error);
+    return [];
+  }
+};
+
+// Fetch and transform reviews based on productId
+const judgeMeReviews = await fetchJudgeMeReviews();
+
+// Clean productId (remove gid://shopify/Product/)
+const numericProductId = productId.replace("gid://shopify/Product/", "");
+
+// Filter reviews by productId
+const reviewByProductId = judgeMeReviews.filter(
+  (review) => review.external_product_id === numericProductId
+);
+
+
+
+// Transform reviews for display
+const transformReviews = (reviews) => {
+  return reviews.map((review) => ({
+    avatar: review.pictures?.[0]?.urls.original  || "/default-avatar.png",
+    name: review.reviewer?.name || "Anonymous",
+    date: new Date(review.created_at).toLocaleDateString(),
+    rating: review.rating,
+    comment: review.body,
+  }));
+};
+
+const reviews = transformReviews(judgeMeReviews);
+
+// console.log(reviews)
+---
+
+<div class="container mx-auto px-4 py-8 mb-12 ">
+  <h2 class="text-2xl font-bold mb-6">Customer Reviews</h2>
+  {reviews.length > 0 ? (
+   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {reviews.map((review, key) => (
+        
+            review.rating > 3 ?(
+            <ReviewComment key={key} review={review} />
+
+            ):(
+                <></>
+            )
+        
+      ))}
+    </div>
+  ) : (
+    <p class="text-gray-500">No reviews yet for this product.</p>
+  )}
+</div>
