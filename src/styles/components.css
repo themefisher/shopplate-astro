@@ -222,9 +222,9 @@
   @apply prose-pre:rounded-lg prose-pre:bg-light prose-pre:dark:bg-darkmode-light;
   @apply prose-code:px-1 prose-code:text-primary prose-code:dark:text-darkmode-primary;
   @apply prose-strong:text-text-dark prose-strong:dark:text-darkmode-text;
-  @apply prose-a:text-text prose-a:underline hover:prose-a:text-primary prose-a:dark:text-darkmode-text hover:prose-a:dark:text-darkmode-primary;
+  @apply prose-a:text-text prose-a:underline prose-a:hover:text-primary prose-a:dark:text-darkmode-text prose-a:hover:dark:text-darkmode-primary;
   @apply prose-li:text-text prose-li:dark:text-darkmode-text;
-  @apply prose-table:relative prose-table:overflow-hidden prose-table:rounded-lg prose-table:before:absolute prose-table:before:left-0 prose-table:before:top-0 prose-table:before:h-full prose-table:before:w-full prose-table:before:rounded-[inherit] prose-table:before:border prose-table:before:content-[""] prose-table:before:dark:border-darkmode-border;
+  @apply prose-table:relative prose-table:overflow-hidden prose-table:rounded-lg before:prose-table:absolute before:prose-table:left-0 before:prose-table:top-0 before:prose-table:h-full before:prose-table:w-full before:prose-table:rounded-[inherit] before:prose-table:border before:prose-table:content-[""] before:prose-table:dark:border-darkmode-border;
   @apply prose-thead:border-border prose-thead:bg-light prose-thead:dark:border-darkmode-border prose-thead:dark:bg-darkmode-light;
   @apply prose-th:relative prose-th:z-10 prose-th:px-4 prose-th:py-[18px] prose-th:text-text-dark prose-th:dark:text-darkmode-text;
   @apply prose-tr:border-border prose-tr:dark:border-darkmode-border;

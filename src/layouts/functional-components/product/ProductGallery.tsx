@@ -4,7 +4,7 @@ import {
   HiOutlineArrowNarrowRight,
 } from "react-icons/hi";
 import InnerImageZoom from "react-inner-image-zoom";
-import "react-inner-image-zoom/lib/InnerImageZoom/styles.css";
+import 'react-inner-image-zoom/lib/styles.min.css';
 import type { Swiper as TSwiper } from "swiper";
 import "swiper/css";
 import "swiper/css/free-mode";
