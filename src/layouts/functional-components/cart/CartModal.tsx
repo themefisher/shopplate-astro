@@ -140,13 +140,7 @@ const CartModal: React.FC = () => {
                       </div>
                       <a href={merchandiseUrl.toString()} className="z-30 flex flex-row space-x-4">
                         <div className="relative h-16 w-16 overflow-hidden rounded-md border border-neutral-300 bg-neutral-300">
-                          <img
-                            className="h-full w-full object-cover"
-                            src={item.merchandise.product.featuredImage?.url || "/images/product_image404.jpg"}
-                            alt={item.merchandise.product.featuredImage?.altText || item.merchandise.product.title}
-                            width={64}
-                            height={64}
-                          />
+                          <img className="h-full w-full object-cover" src={item.merchandise.product.images.edges.find((edge: any) => edge.node.altText === item.merchandise.selectedOptions.find((option: any) => option.name === "Color")?.value)?.node.url || item.merchandise.product.featuredImage?.url || "/images/product_image404.jpg"} alt={item.merchandise.title} width={64} height={64} />
                         </div>
                         <div className="flex flex-1 flex-col text-base">
                           <span>{item.merchandise.product.title}</span>
