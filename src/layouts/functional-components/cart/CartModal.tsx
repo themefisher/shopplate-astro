@@ -181,6 +181,12 @@ const CartModal: React.FC = () => {
               </div>
               <div className="mb-3 flex items-center justify-between border-b border-neutral-200 pb-1 pt-1 dark:border-neutral-700">
                 <p>Total</p>
+                {/* todo: fix */}
+                {/* <Price
+                    className="text-right text-base text-black dark:text-white"
+                    amount={cart.cost.totalAmount.amount}
+                    currencyCode={cart.cost.totalAmount.currencyCode}
+                  /> */}
                 <Price
                   className="text-right text-base text-black dark:text-white"
                   amount={currentCart.cost.totalAmount.amount}

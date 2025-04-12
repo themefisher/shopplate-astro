@@ -1,10 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, type JSX, type MouseEvent, type TouchEvent } from "react";
+import { FiZoomIn } from "react-icons/fi";
 import {
   HiOutlineArrowNarrowLeft,
   HiOutlineArrowNarrowRight,
 } from "react-icons/hi";
-import InnerImageZoom from "react-inner-image-zoom";
-import 'react-inner-image-zoom/lib/styles.min.css';
 import type { Swiper as TSwiper } from "swiper";
 import "swiper/css";
 import "swiper/css/free-mode";
@@ -21,67 +20,187 @@ export interface ImageItem {
   height: number;
 }
 
-const ProductGallery = ({ images }: { images: ImageItem[] }) => {
-  const [thumbsSwiper, setThumbsSwiper] = useState<TSwiper | null>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
-  const [loadingThumb, setLoadingThumb] = useState(true);
-  const [picUrl, setPicUrl] = useState(images.length > 0 ? images[0].url : "");
+interface Position {
+  x: number;
+  y: number;
+}
 
-  const prevRef = useRef(null);
-  const nextRef = useRef(null);
+interface CustomZoomImageProps {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+}
+
+const CustomZoomImage = ({ src, alt, width, height }: CustomZoomImageProps): JSX.Element => {
+  const [isZoomed, setIsZoomed] = useState(false);
+  const [position, setPosition] = useState<Position>({ x: 0.5, y: 0.5 });
+  const [showMagnifier, setShowMagnifier] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
+  const [touchStartPosition, setTouchStartPosition] = useState<Position | null>(null);
+  const [touchMoveCount, setTouchMoveCount] = useState(0);
+  const imageRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0);
+  }, []);
+
+  const updatePosition = (clientX: number, clientY: number): void => {
+    if (!imageRef.current) return;
+    const { left, top, width, height } = imageRef.current.getBoundingClientRect();
+    const x = Math.max(0, Math.min(1, (clientX - left) / width));
+    const y = Math.max(0, Math.min(1, (clientY - top) / height));
+    setPosition({ x, y });
+  };
+
+  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
+    if (isTouchDevice) return;
+    updatePosition(e.clientX, e.clientY);
+  };
+
+  const handleTouchStart = (e: TouchEvent<HTMLDivElement>) => {
+    if (e.touches.length === 1) {
+      const touch = e.touches[0];
+      updatePosition(touch.clientX, touch.clientY);
+      setTouchStartPosition({ x: touch.clientX, y: touch.clientY });
+      setTouchMoveCount(0);
+      if (!isZoomed) setShowMagnifier(true);
+    }
+  };
+
+  const handleTouchMove = (e: TouchEvent<HTMLDivElement>) => {
+    if (e.touches.length === 1) {
+      const touch = e.touches[0];
+      updatePosition(touch.clientX, touch.clientY);
+      setTouchMoveCount(prev => prev + 1);
+    }
+  };
+
+  const handleTouchEnd = () => {
+    if (touchMoveCount < 5 && touchStartPosition) {
+      handleClick();
+    }
+    setTouchStartPosition(null);
+    if (!isZoomed) setShowMagnifier(false);
+  };
+
+  const handleClick = () => {
+    setIsZoomed(!isZoomed);
+  };
+
+  return (
+    <div
+      className={`relative w-full h-full overflow-hidden rounded-md ${!isZoomed && showMagnifier ? 'cursor-zoom-in' : isZoomed ? 'cursor-zoom-out' : ''}`}
+      ref={imageRef}
+      onMouseEnter={() => !isTouchDevice && setShowMagnifier(true)}
+      onMouseLeave={() => !isTouchDevice && setShowMagnifier(false)}
+      onMouseMove={handleMouseMove}
+      onClick={!isTouchDevice ? handleClick : undefined}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
+      <img
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        className="w-full h-full object-contain"
+        draggable={false}
+      />
+
+      {showMagnifier && !isZoomed && (
+        <div
+          className="absolute z-10 flex items-center justify-center bg-white opacity-70 rounded-full p-1 shadow-md"
+          style={{
+            left: `${position.x * 100}%`,
+            top: `${position.y * 100}%`,
+            transform: 'translate(-50%, -50%)',
+            pointerEvents: 'none',
+            width: isTouchDevice ? '40px' : '24px',
+            height: isTouchDevice ? '40px' : '24px'
+          }}
+        >
+          <FiZoomIn size={isTouchDevice ? 24 : 16} />
+        </div>
+      )}
+
+      {isZoomed && (
+        <div
+          className="absolute top-0 left-0 right-0 bottom-0 cursor-zoom-out"
+          style={{
+            backgroundImage: `url(${src})`,
+            backgroundSize: '200% 200%',
+            backgroundPosition: `${position.x * 100}% ${position.y * 100}%`,
+            zIndex: 10,
+          }}
+        />
+      )}
+
+      {isTouchDevice && isZoomed && (
+        <div className="absolute bottom-2 left-0 right-0 text-center bg-black opacity-50 text-white py-1 text-sm z-20">
+          Pan to move, tap to exit zoom
+        </div>
+      )}
+    </div>
+  );
+};
+
+interface ProductGalleryProps {
+  images: ImageItem[];
+}
+
+const ProductGallery = ({ images }: ProductGalleryProps): JSX.Element => {
+  const [thumbsSwiper, setThumbsSwiper] = useState<TSwiper | null>(null);
+  const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [isHovered, setIsHovered] = useState<boolean>(false);
+  const [loadingThumb, setLoadingThumb] = useState<boolean>(true);
+  const [picUrl, setPicUrl] = useState<string>("");
+  const [isTouchDevice, setIsTouchDevice] = useState<boolean>(false);
+
+  const prevRef = useRef<HTMLDivElement | null>(null);
+  const nextRef = useRef<HTMLDivElement | null>(null);
 
   const altTextArray = images.map((item) => item.altText);
-  const filteredImages = images.filter(
-    (item) => item.altText === altTextArray[activeIndex]
-  );
 
-  // Listen to URL changes using popstate and polling
   useEffect(() => {
-    const updateStateFromURL = () => {
+    const updateFromURL = () => {
       const params = new URLSearchParams(window.location.search);
       const searchParam = params.get("color");
-
       if (searchParam) {
         const foundIndex = altTextArray.indexOf(searchParam);
-        if (foundIndex !== -1) {
-          setActiveIndex(foundIndex);
-          setPicUrl(images[foundIndex].url);
-        }
+        setActiveIndex(foundIndex !== -1 ? foundIndex : 0);
       }
       setLoadingThumb(false);
     };
 
-    // Initial check on component mount
-    updateStateFromURL();
+    updateFromURL();
+    window.addEventListener("popstate", updateFromURL);
 
-    // Listen for back/forward button events (popstate)
-    window.addEventListener("popstate", updateStateFromURL);
-
-    // Polling to detect manual URL changes
-    const polling = setInterval(() => {
-      updateStateFromURL();
-    }, 500);
-
-    // Cleanup event listener and polling
+    const interval = setInterval(updateFromURL, 500);
     return () => {
-      window.removeEventListener("popstate", updateStateFromURL);
-      clearInterval(polling);
+      window.removeEventListener("popstate", updateFromURL);
+      clearInterval(interval);
     };
-  }, [altTextArray, images]);
+  }, [altTextArray]);
 
-  const handleSlideChange = (swiper: TSwiper) => {
+  useEffect(() => {
+    setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0);
+  }, []);
+
+  const filteredImages = images.filter(
+    (item) => item.altText === altTextArray[activeIndex]
+  );
+
+  const handleSlideChange = (swiper: TSwiper): void => {
     setActiveIndex(swiper.activeIndex);
-    setPicUrl(filteredImages[swiper.activeIndex]?.url);
+    setPicUrl(filteredImages[swiper.activeIndex]?.url || "");
   };
 
-  const handleThumbSlideClick = (clickedUrl: string) => {
-    const foundIndex = filteredImages.findIndex(
-      (item) => item.url === clickedUrl
-    );
+  const handleThumbSlideClick = (clickedUrl: string): void => {
+    const foundIndex = filteredImages.findIndex((item) => item.url === clickedUrl);
     if (foundIndex !== -1) {
       setActiveIndex(foundIndex);
-      setPicUrl(clickedUrl);
     }
   };
 
@@ -105,17 +224,18 @@ const ProductGallery = ({ images }: { images: ImageItem[] }) => {
             nextEl: nextRef.current,
           }}
           onSlideChange={handleSlideChange}
+          allowTouchMove={!isHovered}
         >
           {filteredImages.map((item) => (
             <SwiperSlide key={item.url}>
-              <InnerImageZoom
-                src={item.url}
-                zoomSrc={item.url}
-                width={722}
-                height={623}
-                zoomType="hover"
-                className="mb-6 border border-border dark:border-border/40 rounded-md max-h-[623px]"
-              />
+              <div className="mb-6 border border-border dark:border-border/40 rounded-md max-h-[623px] overflow-hidden">
+                <CustomZoomImage
+                  src={item.url}
+                  alt={item.altText}
+                  width={722}
+                  height={623}
+                />
+              </div>
             </SwiperSlide>
           ))}
           <div
@@ -142,9 +262,9 @@ const ProductGallery = ({ images }: { images: ImageItem[] }) => {
       <Swiper
         onSwiper={setThumbsSwiper}
         spaceBetween={10}
-        slidesPerView={4}
-        freeMode
-        watchSlidesProgress
+        slidesPerView={isTouchDevice ? 3.5 : 4}
+        freeMode={true}
+        watchSlidesProgress={true}
         modules={[FreeMode, Navigation, Thumbs]}
       >
         {filteredImages.map((item) => (
@@ -162,6 +282,7 @@ const ProductGallery = ({ images }: { images: ImageItem[] }) => {
                 width={168}
                 height={146}
                 className="max-h-[146px]"
+                draggable={false}
               />
             </div>
           </SwiperSlide>

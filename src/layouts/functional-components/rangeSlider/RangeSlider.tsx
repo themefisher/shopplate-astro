@@ -1,8 +1,6 @@
 import config from "@/config/config.json";
-import MultiRangeSlider from "multi-range-slider-react";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./rangeSlider.css";
-
 
 function createUrl(path: string, params: URLSearchParams) {
   return `${path}?${params.toString()}`;
@@ -15,34 +13,106 @@ const RangeSlider = ({
 }) => {
   const { currencyCode, currencySymbol } = config.shopify;
 
+  const maxAmount = parseInt(maxPriceData?.amount);
   const [minValue, setMinValue] = useState(0);
-  const [maxValue, setMaxValue] = useState(parseInt(maxPriceData?.amount));
+  const [maxValue, setMaxValue] = useState(maxAmount);
 
-  // Initialize state from current URL parameters
+  const rangeRef = useRef<HTMLDivElement>(null);
+  const minThumbRef = useRef<HTMLDivElement>(null);
+  const maxThumbRef = useRef<HTMLDivElement>(null);
+  const rangeLineRef = useRef<HTMLDivElement>(null);
+
+  const searchParams = new URLSearchParams(window.location.search);
+  const getMinPrice = searchParams.get("minPrice");
+  const getMaxPrice = searchParams.get("maxPrice");
+
+  // Initialize from URL
   useEffect(() => {
-    const searchParams = new URLSearchParams(window.location.search);
-    const minPrice = parseInt(searchParams.get("minPrice") || "0");
-    const maxPrice = parseInt(
-      searchParams.get("maxPrice") || maxPriceData?.amount
-    );
-
-    setMinValue(minPrice);
-    setMaxValue(maxPrice);
+    setMinValue(parseInt(getMinPrice || "0"));
+    setMaxValue(parseInt(getMaxPrice || maxPriceData?.amount));
   }, [maxPriceData]);
+
+  useEffect(() => {
+    updateRangeBar();
+  }, [minValue, maxValue]);
+
+  const updateRangeBar = () => {
+    if (
+      !rangeLineRef.current ||
+      !minThumbRef.current ||
+      !maxThumbRef.current ||
+      !rangeRef.current
+    )
+      return;
+
+    const rangeWidth = rangeRef.current.getBoundingClientRect().width;
+    const minPercent = (minValue / maxAmount) * 100;
+    const maxPercent = (maxValue / maxAmount) * 100;
+
+    rangeLineRef.current.style.left = `${minPercent}%`;
+    rangeLineRef.current.style.width = `${maxPercent - minPercent}%`;
+
+    minThumbRef.current.style.left = `${minPercent}%`;
+    maxThumbRef.current.style.left = `${maxPercent}%`;
+  };
+
+  const handleMouseDown = (thumb: "min" | "max") => (e: React.MouseEvent) => {
+    e.preventDefault();
+
+    const startX = e.clientX;
+    const rangeRect = rangeRef.current?.getBoundingClientRect();
+    if (!rangeRect) return;
+
+    const rangeWidth = rangeRect.width;
+    const initialMinVal = minValue;
+    const initialMaxVal = maxValue;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const dx = e.clientX - startX;
+      const dPercent = (dx / rangeWidth) * 100;
+
+      if (thumb === "min") {
+        const newPercent = (initialMinVal / maxAmount) * 100 + dPercent;
+        const newValue = Math.max(
+          0,
+          Math.min(maxValue - 1, Math.round((newPercent * maxAmount) / 100))
+        );
+        setMinValue(newValue);
+      } else {
+        const newPercent = (initialMaxVal / maxAmount) * 100 + dPercent;
+        const newValue = Math.max(
+          minValue + 1,
+          Math.min(maxAmount, Math.round((newPercent * maxAmount) / 100))
+        );
+        setMaxValue(newValue);
+      }
+    };
+
+    const handleMouseUp = () => {
+      document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseup", handleMouseUp);
+    };
+
+    document.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseup", handleMouseUp);
+  };
 
   function priceChange(min: number, max: number) {
     const searchParams = new URLSearchParams(window.location.search);
-
-    // Update or add minPrice and maxPrice parameters
     searchParams.set("minPrice", min.toString());
     searchParams.set("maxPrice", max.toString());
 
     const newUrl = createUrl("/products", searchParams);
-    window.location.href = newUrl.toString();
+    window.location.href = newUrl;
   }
 
+  const showSubmitButton =
+    (minValue !== (getMinPrice ? parseInt(getMinPrice) : 0) ||
+      maxValue !== (getMaxPrice ? parseInt(getMaxPrice) : maxAmount)) &&
+    (minValue !== 0 || maxValue !== maxAmount);
+
   return (
-    <div>
+    <div className="range-slider-container">
       <div className="flex justify-between">
         <p>
           {currencySymbol}
@@ -54,28 +124,27 @@ const RangeSlider = ({
         </p>
       </div>
 
-      <MultiRangeSlider
-        style={{ border: "none", boxShadow: "none" }}
-        ruler="false"
-        label="false"
-        min="0"
-        max={`${maxPriceData?.amount}`}
-        minValue={minValue}
-        maxValue={maxValue}
-        onInput={(e) => {
-          setMinValue(e.minValue);
-          setMaxValue(e.maxValue);
-        }}
-      />
+      <div className="range-slider" ref={rangeRef}>
+        <div className="slider-track"></div>
+        <div className="slider-range" ref={rangeLineRef}></div>
+        <div
+          className="slider-thumb thumb-min"
+          ref={minThumbRef}
+          onMouseDown={handleMouseDown("min")}
+        ></div>
+        <div
+          className="slider-thumb thumb-max"
+          ref={maxThumbRef}
+          onMouseDown={handleMouseDown("max")}
+        ></div>
+      </div>
 
-      {(minValue === 0 && maxValue === parseInt(maxPriceData?.amount)) || (
+      {showSubmitButton && (
         <button
-          className="btn btn-sm btn-primary w-full"
-          onClick={() => {
-            priceChange(minValue, maxValue);
-          }}
+          className="btn btn-sm btn-primary w-full mb-4"
+          onClick={() => priceChange(minValue, maxValue)}
         >
-          Apply
+          Submit
         </button>
       )}
     </div>

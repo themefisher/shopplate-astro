@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { useCollapse } from "react-collapsed";
-import { useStore } from "@nanostores/react";
-import { layoutView, setLayoutView } from "@/cartStore";
+import { type SortFilterItem, sorting } from "@/lib/constants";
+import { createUrl } from "@/lib/utils";
+import React, { Suspense, useEffect, useState } from "react";
 import { BsGridFill } from "react-icons/bs";
 import { FaList } from "react-icons/fa6";
 import { TbFilter, TbFilterX } from "react-icons/tb";
 import DropdownMenu from "../filter/DropdownMenu";
-import { type SortFilterItem, sorting } from "@/lib/constants";
 import ProductFilters from "../ProductFilters";
 
 export type ListItem = SortFilterItem | PathFilterItem;
@@ -20,17 +18,19 @@ const ProductLayouts = ({
   vendorsWithCounts,
   categoriesWithCounts,
 }: any) => {
-  const { getCollapseProps, getToggleProps, isExpanded, setExpanded } = useCollapse();
   const [isInputEditing, setInputEditing] = useState(false);
-  const layout = useStore(layoutView);
+  const [isExpanded, setExpanded] = useState(false);
+  const [isListView, setIsListView] = useState(false);
 
-  const layoutChange = (isCard: string) => {
-    setLayoutView(isCard === "list" ? "list" : "card");
-  };
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    setIsListView(params.get("layout") === "list");
+  }, []);
 
   useEffect(() => {
     const inputField = document.getElementById("searchInput") as HTMLInputElement;
-    if (isInputEditing || new URLSearchParams(window.location.search).get("q")) {
+    const params = new URLSearchParams(window.location.search);
+    if (isInputEditing || params.get("q")) {
       inputField?.focus();
     }
   }, [isInputEditing]);
@@ -52,8 +52,23 @@ const ProductLayouts = ({
     };
 
     document.addEventListener("click", handleOutsideClick);
-    return () => document.removeEventListener("click", handleOutsideClick);
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
   }, [isExpanded, isInputEditing]);
+
+  function layoutChange(layoutType: string) {
+    const params = new URLSearchParams(window.location.search);
+    if (layoutType === "list") {
+      params.set("layout", "list");
+    } else {
+      params.delete("layout");
+    }
+
+    const newUrl = createUrl("/products", params);
+    window.history.pushState({}, "", newUrl);
+    setIsListView(layoutType === "list");
+  }
 
   return (
     <section className="pt-4">
@@ -70,14 +85,14 @@ const ProductLayouts = ({
                 <div className="flex gap-2">
                   <button
                     onClick={() => layoutChange("card")}
-                    className={`btn border dark:border-darkmode-border ${layout === "list" ? "btn-outline-primary" : "btn-primary"
+                    className={`btn border dark:border-darkmode-border ${isListView ? "btn-outline-primary" : "btn-primary"
                       } p-2 hover:scale-105 duration-300`}
                   >
                     <BsGridFill />
                   </button>
                   <button
                     onClick={() => layoutChange("list")}
-                    className={`btn border dark:border-darkmode-border ${layout === "list" ? "btn-primary" : "btn-outline-primary"
+                    className={`btn border dark:border-darkmode-border ${isListView ? "btn-primary" : "btn-outline-primary"
                       } p-2 hover:scale-105 duration-300`}
                   >
                     <FaList />
@@ -87,7 +102,7 @@ const ProductLayouts = ({
 
               <div className="flex gap-x-8">
                 <div className="filter-button-container block lg:hidden mt-1">
-                  <button {...getToggleProps()}>
+                  <button onClick={() => setExpanded(!isExpanded)}>
                     {isExpanded ? (
                       <span className="font-medium text-base flex gap-x-1 items-center justify-center">
                         <TbFilterX /> Filter
@@ -104,7 +119,9 @@ const ProductLayouts = ({
                   <p className="max-md:hidden text-text-dark dark:text-darkmode-text-dark">
                     Sort By
                   </p>
-                  <DropdownMenu list={sorting} />
+                  <Suspense>
+                    <DropdownMenu list={sorting} />
+                  </Suspense>
                 </div>
               </div>
             </div>
@@ -115,17 +132,19 @@ const ProductLayouts = ({
               <div className="block lg:hidden w-full">
                 <section
                   className="collapse-container-class z-20 bg-body dark:bg-darkmode-body w-full px-4 rounded-md"
-                  {...getCollapseProps()}
+                  style={{ display: isExpanded ? "block" : "none" }}
                 >
                   <div className="pb-8">
-                    <ProductFilters
-                      categories={categories}
-                      vendors={vendors}
-                      tags={tags}
-                      maxPriceData={maxPriceData}
-                      vendorsWithCounts={vendorsWithCounts}
-                      categoriesWithCounts={categoriesWithCounts}
-                    />
+                    <Suspense>
+                      <ProductFilters
+                        categories={categories}
+                        vendors={vendors}
+                        tags={tags}
+                        maxPriceData={maxPriceData}
+                        vendorsWithCounts={vendorsWithCounts}
+                        categoriesWithCounts={categoriesWithCounts}
+                      />
+                    </Suspense>
                   </div>
                 </section>
               </div>
