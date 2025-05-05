@@ -1,3 +1,4 @@
+import { shopifyFetch } from "..";
 import productFragment from "../fragments/product";
 import seoFragment from "../fragments/seo";
 

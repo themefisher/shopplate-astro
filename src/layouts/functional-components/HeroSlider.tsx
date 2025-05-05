@@ -16,6 +16,12 @@ const HeroSlider = ({ products }: { products: Product[] }) => {
           bulletClass: "banner-pagination-bullet",
           bulletActiveClass: "banner-pagination-bullet-active",
         }}
+        loop={true}
+        autoplay={{
+          delay: 5000,
+          disableOnInteraction: false,
+        }}
+        
         modules={[Pagination]}
       >
         {products?.map((item: Product) => (
@@ -35,7 +41,7 @@ const HeroSlider = ({ products }: { products: Product[] }) => {
                   </div>
                   {item.handle && (
                     <a
-                      className="btn btn-sm md:btn-lg btn-primary font-medium"
+                      className="btn btn-sm md:btn-lg bg-[#15B0A4] text-white font-medium"
                       href={`products/${item.handle}`}
                     >
                       Shop Now

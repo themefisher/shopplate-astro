@@ -190,7 +190,7 @@ const CartModal: React.FC = () => {
 
               <a
                 href={currentCart.checkoutUrl}
-                className="block w-full rounded-md bg-dark dark:bg-light p-3 text-center text-sm font-medium text-white dark:text-text-dark opacity-100 hover:opacity-90"
+                className="block w-full rounded-md bg-[#15B0A4] text-white p-3 text-center text-sm font-medium text-white dark:text-text-dark opacity-100 hover:opacity-90"
               >
                 Proceed to Checkout
               </a>

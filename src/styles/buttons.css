@@ -3,7 +3,7 @@
 }
 
 .btn-primary {
-  @apply border-primary bg-primary text-white dark:border-darkmode-primary dark:bg-white dark:text-text-dark text-center;
+  @apply  bg-[#15B004] text-white dark:border-darkmode-primary dark:bg-[#15B0A4] dark:text-text-white text-center;
 }
 
 .btn-outline-primary {

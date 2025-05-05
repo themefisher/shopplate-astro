@@ -21,6 +21,7 @@ import {
   getCollectionProductsQuery,
   getCollectionQuery,
   getCollectionsQuery,
+ 
 } from "./queries/collection";
 import { getMenuQuery } from "./queries/menu";
 import { getPageQuery, getPagesQuery } from "./queries/page";
@@ -418,6 +419,8 @@ export async function getCollections(): Promise<Collection[]> {
   return collections;
 }
 
+
+
 export async function getMenu(handle: string): Promise<Menu[]> {
   const res = await shopifyFetch<ShopifyMenuOperation>({
     query: getMenuQuery,
@@ -596,4 +599,54 @@ export async function getHighestProductPrice(): Promise<{
     console.log("Error fetching highest product price:", error);
     throw error;
   }
+}
+
+
+// Add this function to paste.txt
+// export async function getCollectionsByHandles(handles: string[]): Promise<Collection[]> {
+//   const fetchPromises = handles.map(handle => getCollection(handle));
+//   const collections = await Promise.all(fetchPromises);
+//   return collections.filter(Boolean) as Collection[];
+// }
+
+export async function getCollectionsByIds(ids: string[]): Promise<Collection[]> {
+  // GraphQL query to get collections by specific IDs
+  const query = /* GraphQL */ `
+    query getCollectionsByIds($ids: [ID!]!) {
+      nodes(ids: $ids) {
+        ... on Collection {
+          handle
+          title
+          description
+          image {
+            altText
+            url
+          }
+          seo {
+            title
+            description
+          }
+          updatedAt
+          products(first: 100) {
+            edges {
+              node {
+                id
+              }
+            }
+          }
+        }
+      }
+    }
+  `;
+  
+  const res = await shopifyFetch<any>({
+    query,
+    tags: [TAGS.collections],
+    variables: {
+      ids,
+    },
+  });
+  
+  const collections = res.body?.data?.nodes?.filter(Boolean) || [];
+  return reshapeCollections(collections);
 }

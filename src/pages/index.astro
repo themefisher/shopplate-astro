@@ -4,12 +4,19 @@ import TestimonialsFade,{sampleTestimonialsData} from "@/components/promo/testim
 import config from "@/config/config.json";
 import CollectionsSlider from "@/functional-components/CollectionsSlider";
 import Base from "@/layouts/Base.astro";
-import { getCollectionProducts, getCollections } from "@/lib/shopify";
+import { getCollectionProducts, getCollectionsByIds } from "@/lib/shopify";
 import CallToAction from "@/partials/CallToAction.astro";
 import HeroSlider from "src/layouts/functional-components/HeroSlider";
 
 const { collections } = config.shopify;
 
+// Define the specific collection IDs you want to show
+const SPECIFIC_COLLECTION_IDS = [
+  'gid://shopify/Collection/294462455865', // Replace with your actual collection IDs
+  'gid://shopify/Collection/297286631481',
+  'gid://shopify/Collection/294460031033',
+   'gid://shopify/Collection/296515469369'
+];
 
 // Fetch slider images for the HeroSlider
 const sliderImages = await getCollectionProducts({
@@ -17,7 +24,8 @@ const sliderImages = await getCollectionProducts({
 });
 const heroProducts = sliderImages.products;
 
-const collectionProducts = await getCollections();
+// Fetch specific collections by IDs
+const collectionProducts = await getCollectionsByIds(SPECIFIC_COLLECTION_IDS);
 
 // Fetch featured products
 const { products: featuredProducts } = await getCollectionProducts({
@@ -29,14 +37,14 @@ const { products: featuredProducts } = await getCollectionProducts({
 <Base>
   <section>
     <div class="container">
-      <div class="bg-gradient py-10 rounded-md">
+      <div class="shadow  py-2 rounded-md">
         <HeroSlider products={heroProducts} client:load />
       </div>
     </div>
   </section>
 
   {/* category section */}
-  <section class="section">
+  <section class="section bg-gradient my-20">
     <div class="container">
       <div class="text-center mb-6 md:mb-14">
         <h2>Collections</h2>
@@ -47,7 +55,7 @@ const { products: featuredProducts } = await getCollectionProducts({
 
   {/* Featured Products section */}
   <section>
-    <div class="container">
+    <div class="container ">
       <div class="text-center mb-6 md:mb-14">
         <h2 class="mb-2">Featured Products</h2>
         <p class="md:h5">Explore Today's Featured Picks!</p>

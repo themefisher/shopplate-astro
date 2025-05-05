@@ -197,7 +197,7 @@ const ProductList = ({
                     handle={product?.handle}
                     defaultVariantId={defaultVariantId}
                     stylesClass={
-                      "btn btn-outline-primary max-md:btn-sm drop-shadow-md"
+                      "btn bg-[#15B0A4]  max-md:btn-sm drop-shadow-md"
                     }
                   />
                 </div>

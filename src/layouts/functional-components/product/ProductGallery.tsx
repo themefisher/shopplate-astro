@@ -111,10 +111,10 @@ const ProductGallery = ({ images }: { images: ImageItem[] }) => {
               <InnerImageZoom
                 src={item.url}
                 zoomSrc={item.url}
-                width={722}
-                height={623}
+                // width={722}
+                // height={722}
                 zoomType="hover"
-                className="mb-6 border border-border dark:border-border/40 rounded-md max-h-[623px]"
+                className="mx-auto min-h-[400px] object-fit-cover mb-6 border border-border dark:border-border/40 rounded-md max-h-[723px] "
               />
             </SwiperSlide>
           ))}
