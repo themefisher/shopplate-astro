@@ -1,11 +1,11 @@
-<h1 align=center>Astrofront | AstroJs + Shopify + Tailwind CSS + TypeScript Starter and Boilerplate</h1>
+<h1 align=center>Shopplate | AstroJs + Shopify + Tailwind CSS + TypeScript Starter and Boilerplate</h1>
 
 <p align=center>A free, production-ready astro.js template powered by Tailwind CSS and TypeScript, specifically designed for Shopify. Utilizes the Shopify Storefront API through GraphQL and providing everything you need to jumpstart your Astro project and save valuable time.</p>
 
 <p align=center>Made with ♥ by <a href="https://themefisher.com/">Themefisher</a></p>
 <p align=center> If you find this project useful, please give it a ⭐ to show your support. </p>
 
-<h2 align="center"> <a target="_blank" href="https://astrofront.vercel.app/" rel="nofollow">👀 Demo</a> | <a  target="_blank" href="https://pagespeed.web.dev/analysis/https-astrofront-vercel-app/qs3wscwqpq?form_factor=desktop">Page Speed (99%)🚀</a>
+<h2 align="center"> <a target="_blank" href="https://shopplate.vercel.app/" rel="nofollow">👀 Demo</a> | <a  target="_blank" href="https://pagespeed.web.dev/analysis/https-shopplate-vercel-app/qs3wscwqpq?form_factor=desktop">Page Speed (99%)🚀</a>
 </h2>
 
 <p align=center>
@@ -13,13 +13,13 @@
  <a href="https://github.com/withastro/astro/releases/tag/astro@5.6.1" alt="Contributors">
     <img src="https://img.shields.io/static/v1?label=ASTRO&message=5.6&color=BC52EE&logo=astro" />
 </a>
-  <a href="https://github.com/themefisher/astrofront/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/themefisher/astrofront" alt="license"></a>
+  <a href="https://github.com/themefisher/shopplate/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/themefisher/shopplate" alt="license"></a>
 
-  <img src="https://img.shields.io/github/languages/code-size/themefisher/astrofront" alt="code size">
+  <img src="https://img.shields.io/github/languages/code-size/themefisher/shopplate" alt="code size">
 
-  <a href="https://github.com/themefisher/astrofront/graphs/contributors">
-    <img src="https://img.shields.io/github/contributors/themefisher/astrofront" alt="contributors"></a>
+  <a href="https://github.com/themefisher/shopplate/graphs/contributors">
+    <img src="https://img.shields.io/github/contributors/themefisher/shopplate" alt="contributors"></a>
 </p>
 
 ## 📌 Key Features
@@ -156,8 +156,8 @@ npm run build
 
 ## 🐞 Reporting Issues
 
-We use GitHub Issues as the official bug tracker for this Template. Please Search [existing issues](https://github.com/themefisher/astrofront/issues). It’s possible someone has already reported the same problem.
-If your problem or idea has not been addressed yet, feel free to [open a new issue](https://github.com/themefisher/astrofront/issues).
+We use GitHub Issues as the official bug tracker for this Template. Please Search [existing issues](https://github.com/themefisher/shopplate/issues). It’s possible someone has already reported the same problem.
+If your problem or idea has not been addressed yet, feel free to [open a new issue](https://github.com/themefisher/shopplate/issues).
 
 <!-- licence -->
 
@@ -165,7 +165,7 @@ If your problem or idea has not been addressed yet, feel free to [open a new iss
 
 Copyright (c) 2024 - Present, Designed & Developed by [Themefisher](https://themefisher.com/)
 
-**Code License:** Released under the [MIT](https://github.com/themefisher/astrofront/blob/main/LICENSE) license.
+**Code License:** Released under the [MIT](https://github.com/themefisher/shopplate/blob/main/LICENSE) license.
 
 **Image license:** The images are only for demonstration purposes. They have their license, we don't have permission to share those images.
 

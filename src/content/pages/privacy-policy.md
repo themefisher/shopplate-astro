@@ -14,7 +14,7 @@ We collect certain identifying personal data when you sign up to our Service suc
 collect non-identifying information from you, such as referring URL, browser, operating system, cookie information, and Internet Service Provider. Without a subpoena, voluntary compliance on the part of your Internet Service Provider, or additional records from a third party, this information alone cannot usually be used to identify you.The term "personal data" does not include any anonymized and aggregated data made on the basis of personal data, which are wholly owned by Conclude.
 <br/>
 
-### About Astrofront
+### About Shopplate
 
 #### Service Provided As
 

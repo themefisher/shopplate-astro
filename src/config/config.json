@@ -1,7 +1,7 @@
 {
   "site": {
-    "title": "Astrofront",
-    "base_url": "https://astrofront.vercel.app/",
+    "title": "Shopplate",
+    "base_url": "https://shopplate.vercel.app/",
     "base_path": "/",
     "trailing_slash": false,
     "favicon": "/images/favicon.png",
@@ -9,7 +9,7 @@
     "logo_darkmode": "/images/logo-darkmode.png",
     "logo_width": "150",
     "logo_height": "33",
-    "logo_text": "Astrofront"
+    "logo_text": "Shopplate"
   },
 
   "settings": {
@@ -28,7 +28,7 @@
   "navigation_button": {
     "enable": true,
     "label": "Get Started",
-    "link": "https://github.com/themefisher/astrofront"
+    "link": "https://github.com/themefisher/shopplate"
   },
 
   "metadata": {
