@@ -64,13 +64,13 @@ const CollectionsSlider = ({ collections }: { collections: any }) => {
           const { title, handle, image, } = item;
           return (
             <SwiperSlide key={handle}>
-              <div className="text-center relative">
+              <div className="text-center relative bg-transparent" >
                 <img
                   src={image?.url}
                   width={424}
-                  height={306}
+                  height={606}
                   alt={title}
-                  className="h-[150px] md:h-[250px] lg:h-[306px] object-cover rounded-md"
+                  className="h-[150px] md:h-[250px] lg:h-[400px] w-[150px] md:w-[250px] lg:w-[400px] object-cover rounded-full"
                 />
                 <div className="py-6">
                   <h3 className="mb-2 font-medium h4">

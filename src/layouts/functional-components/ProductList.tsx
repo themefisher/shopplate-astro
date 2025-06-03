@@ -172,7 +172,7 @@ const ProductList = ({
 
                   <div className="flex items-center gap-x-2 mt-2">
                     <span className="text-text-light dark:text-darkmode-text-light text-xs md:text-lg font-bold">
-                      ৳ {priceRange?.minVariantPrice?.amount}{" "}
+                      $ {priceRange?.minVariantPrice?.amount}{" "}
                       {priceRange?.minVariantPrice?.currencyCode}
                     </span>
                     {parseFloat(
@@ -197,7 +197,7 @@ const ProductList = ({
                     handle={product?.handle}
                     defaultVariantId={defaultVariantId}
                     stylesClass={
-                      "btn bg-[#15B0A4]  max-md:btn-sm drop-shadow-md"
+                      "btn bg-[#15B0A4] text-white max-md:btn-sm drop-shadow-md"
                     }
                   />
                 </div>

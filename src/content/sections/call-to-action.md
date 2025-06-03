@@ -1,10 +1,9 @@
 ---
 enable: true
-title: "Curved Collection for Your
-Bedroom Get 25% Off"
+title: "Don’t miss out on unbeatable savings! Enjoy limited-time discounts on your favorite items"
 sub_title: "Deal of the Week"
 image: "/images/call-to-action.png"
-description: "Subscribe our Newsletter and get all latest information and offers"
+description: "Grab the best deals before they’re gone!"
 button:
   enable: true
   label: "Shop Now"

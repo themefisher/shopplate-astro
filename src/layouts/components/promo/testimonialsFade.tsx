@@ -42,15 +42,15 @@ export default function TestimonialsGrid({
       <div 
         className="relative rounded-t-lg bg-cover bg-center"
         style={{ 
-          backgroundImage: `url(${pageHeaderBgImg})`, 
-          minHeight: pageHeaderMinVh 
+          // backgroundImage: `url(${pageHeaderBgImg})`, 
+          // minHeight: pageHeaderMinVh 
         }}
       >
         {/* Overlay */}
         <div className="absolute inset-0 bg-black opacity-10"></div>
         
         {/* Content */}
-        <div className="container relative z-10 mx-auto px-4">
+        {/* <div className="container relative z-10 mx-auto px-4">
           <div className="flex justify-center">
             <div className="max-w-3xl text-center pt-16 pb-12">
               <h1 className="text-4xl font-bold mb-4">{data.hero.title}</h1>
@@ -65,7 +65,7 @@ export default function TestimonialsGrid({
               </button>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
       
       {/* Testimonials section */}
@@ -81,16 +81,16 @@ export default function TestimonialsGrid({
               className="border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow"
             >
               <div className="p-6">
-                <Reviews rating={testimonial.rating.toString()} />
+                <Reviews rating={testimonial.rating} />
                 <p className="mt-4 text-gray-700">{testimonial.content}</p>
                 <div className="flex items-center mt-4">
-                  <div className="w-10 h-10 mr-3 overflow-hidden rounded-full">
+                  {/* <div className="w-10 h-10 mr-3 overflow-hidden rounded-full">
                     <img 
                       src={testimonial.author.avatar} 
                       className="w-full h-full object-cover" 
                       alt={testimonial.author.name}
                     />
-                  </div>
+                  </div> */}
                   <h6 className="font-medium">{testimonial.author.name}</h6>
                 </div>
               </div>
@@ -117,7 +117,7 @@ export const sampleTestimonialsData: TestimonialsData = {
     {
       id: 1,
       rating: 4,
-      content: "We're not always in the position that we want to be at. We're constantly growing. We're constantly making mistakes. We're constantly trying to express ourselves and actualize our dreams. If you have the opportunity to play this game of life you need to appreciate every moment.",
+      content: "Finally, a store that gets Matter! I’ve been waiting for this level of smart home integration. Everything I bought synced perfectly with SmartThings and Alexa. ",
       author: {
         name: "Alexa Liras",
         avatar: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1760&q=80"
@@ -126,7 +126,7 @@ export const sampleTestimonialsData: TestimonialsData = {
     {
       id: 2,
       rating: 5,
-      content: "There's nothing I really wanted to do in life that I wasn't able to get good at. That's my skill. I'm not really specifically talented at anything except for the ability to learn. That's what I do. That's what I'm here for. Don't be afraid to be wrong because you can't learn anything from a compliment.",
+      content: "Perfect. Everything works across my devices. ",
       author: {
         name: "Laurent Perrier",
         avatar: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1760&q=80"
@@ -135,16 +135,16 @@ export const sampleTestimonialsData: TestimonialsData = {
     {
       id: 3,
       rating: 4,
-      content: "It really matters and then like it really doesn't matter. What matters is the people who are sparked by it. And the people who are like offended by it, it doesn't matter. Because it's about motivating the doers. Because I'm here to follow my dreams and inspire other people to follow their dreams.",
+      content: "Fantastic range of products! I found smart sensors, lights, and even a Matter-compatible Hubs. Great customer service and excellent device selection. I had a question about compatibility, and they responded quickly and clearly. Highly recommended! ",
       author: {
-        name: "Michael Levi",
+        name: "Rebecca L",
         avatar: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1760&q=80"
       }
     },
     {
       id: 4,
       rating: 5,
-      content: "I always felt like I could do anything. That's the main thing people are controlled by! Thoughts- their perception of themselves! They're slowed down by their perception of themselves. If you're taught you can't do anything, you won't do anything. I was taught I could do everything.",
+      content: "Really impressed with Matterhub! It’s tough finding smart home gear up here that works with both Apple and Alexa, but everything I ordered was fully compatible and shipped quickly. ",
       author: {
         name: "Kylie Peterson",
         avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1760&q=80"
@@ -153,7 +153,7 @@ export const sampleTestimonialsData: TestimonialsData = {
     {
       id: 5,
       rating: 4,
-      content: "It really matters and then like it really doesn't matter. What matters is the people who are sparked by it. And the people who are like offended by it, it doesn't matter. Because it's about motivating the doers. Because I'm here to follow my dreams and inspire other people to follow their dreams.",
+      content: "Great experience overall! The site was easy to navigate, and I appreciated the helpful descriptions about Matter compatibility. One item was slightly delayed in shipping, but customer service kept me informed. ",
       author: {
         name: "Michael Levi",
         avatar: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1760&q=80"
@@ -164,7 +164,7 @@ export const sampleTestimonialsData: TestimonialsData = {
       rating: 5,
       content: "I always felt like I could do anything. That's the main thing people are controlled by! Thoughts- their perception of themselves! They're slowed down by their perception of themselves. If you're taught you can't do anything, you won't do anything. I was taught I could do everything.",
       author: {
-        name: "Kylie Peterson",
+        name: "Sofia G.",
         avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1760&q=80"
       }
     }

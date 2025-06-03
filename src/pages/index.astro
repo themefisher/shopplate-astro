@@ -7,15 +7,15 @@ import Base from "@/layouts/Base.astro";
 import { getCollectionProducts, getCollectionsByIds } from "@/lib/shopify";
 import CallToAction from "@/partials/CallToAction.astro";
 import HeroSlider from "src/layouts/functional-components/HeroSlider";
-
+import { Truck, Package, User, CreditCard } from 'lucide-react';
 const { collections } = config.shopify;
 
 // Define the specific collection IDs you want to show
 const SPECIFIC_COLLECTION_IDS = [
-  'gid://shopify/Collection/294462455865', // Replace with your actual collection IDs
-  'gid://shopify/Collection/297286631481',
-  'gid://shopify/Collection/294460031033',
-   'gid://shopify/Collection/296515469369'
+  'gid://shopify/Collection/294462521401', // Replace with your actual collection IDs
+  'gid://shopify/Collection/294462455865',
+  'gid://shopify/Collection/294460260409',
+   'gid://shopify/Collection/294460227641'
 ];
 
 // Fetch slider images for the HeroSlider
@@ -32,6 +32,11 @@ const { products: featuredProducts } = await getCollectionProducts({
   collection: collections.featured_products,
   reverse: false,
 });
+
+const { products: bestProducts } = await getCollectionProducts({
+  collection: collections.best_selling_products,
+  reverse: false,
+});
 ---
 
 <Base>
@@ -43,11 +48,73 @@ const { products: featuredProducts } = await getCollectionProducts({
     </div>
   </section>
 
+<section>
+  <div class="w-full bg-gray-100 py-12 px-4 mt-20">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        
+        {/* Fast Delivery */}
+        <div class="flex flex-col items-center text-center">
+          <Truck className="h-12 w-12 mb-4" />
+          <h3 class="font-bold text-lg mb-2">Fast Delivery</h3>
+          <p class="text-sm text-gray-700">
+            You can expect a fast and safe delivery right to you front doorstep!
+          </p>
+        </div>
+        
+        {/* 60 days return */}
+        <div class="flex flex-col items-center text-center">
+          <Package className="h-12 w-12 mb-4" />
+          <h3 class="font-bold text-lg mb-2">60 days return</h3>
+          <p class="text-sm text-gray-700">
+            Money-back up to 60 days, commitment to products.
+          </p>
+        </div>
+        
+        {/* Help Center */}
+        <div class="flex flex-col items-center text-center">
+          <User className="h-12 w-12 mb-4" />
+          <h3 class="font-bold text-lg mb-2">Help Center</h3>
+          <p class="text-sm text-gray-700">
+            Round-the-clock assistance for a smooth shopping experience.
+          </p>
+        </div>
+        
+        {/* Secure Online Payment */}
+        <div class="flex flex-col items-center text-center">
+          <CreditCard className="h-12 w-12 mb-4" />
+          <h3 class="font-bold text-lg mb-2">Secure Online Payment</h3>
+          <p class="text-sm text-gray-700">
+            Pay with world's most popular and secure payment methods.
+          </p>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="flex flex-col items-center justify-center w-full bg-slate-900 text-white py-12 px-4 ">
+    <h1 class="text-3xl text-white font-bold mb-4 text-center">HomeKit No Longer Requires Matter Hubs!</h1>
+    
+    <p class="text-center max-w-2xl mb-8">
+      Exciting news for our Apple users! iOS 18 does not require a Matter Hub or a Thread Boarder 
+      router for Matter compatibility and connectivity! (Please note that it only works with iPhone 15 
+      or above).
+    </p>
+    <a href="https://blog.matterhubs.com/ios-18-matter-updates/" class="border border-teal-400 text-teal-400 hover:bg-teal-400/10 rounded-full px-6 py-2 transition-colors">
+      Read more about
+    </a>
+    
+  </div>
+</section>
+
+
   {/* category section */}
   <section class="section bg-gradient my-20">
     <div class="container">
       <div class="text-center mb-6 md:mb-14">
-        <h2>Collections</h2>
+        <h2>Best Collections</h2>
       </div>
       <CollectionsSlider client:load collections={collectionProducts} />
     </div>
@@ -65,6 +132,18 @@ const { products: featuredProducts } = await getCollectionProducts({
   </section>
 
   <CallToAction />
+
+ {/* Featured Products section */}
+ <section>
+  <div class="container ">
+    <div class="text-center mb-6 md:mb-14">
+      <h2 class="mb-2">Best Selling Products</h2>
+      <p class="md:h5">Explore Today's Featured Picks!</p>
+    </div>
+    <FeaturedProducts products={bestProducts} />
+  </div>
+</section>
+
   <div class="mt-5 mb-10">
     <TestimonialsFade 
       pageHeaderBgImg={"https://images.unsplash.com/photo-1519642918688-7e43b19245d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2676&q=80"} 

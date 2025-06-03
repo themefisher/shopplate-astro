@@ -24,7 +24,7 @@ export default function ReviewComment({ review }: Props) {
           />
         </div> */}
         <div>
-          <h3 className="font-semibold text-gray-800">{review.name}</h3>
+          <h4 className="font-semibold text-gray-800">{review.name}</h4>
           <p className="text-xs text-gray-500">{review.date}</p>
         </div>
       </div>

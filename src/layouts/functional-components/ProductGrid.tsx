@@ -161,7 +161,7 @@ const ProductGrid = ({
                   handle={product?.handle}
                   defaultVariantId={defaultVariantId}
                   stylesClass={
-                    "btn bg-[#15B0A4]  max-md:btn-sm z-10 absolute bottom-24 md:bottom-0 left-1/2 transform -translate-x-1/2 md:translate-y-full md:group-hover:-translate-y-6 duration-300 ease-in-out whitespace-nowrap drop-shadow-md"
+                    "btn bg-[#15B0A4] text-white max-md:btn-sm z-10 absolute bottom-24 md:bottom-0 left-1/2 transform -translate-x-1/2 md:translate-y-full md:group-hover:-translate-y-6 duration-300 ease-in-out whitespace-nowrap drop-shadow-md"
                   }
                 />
               </div>

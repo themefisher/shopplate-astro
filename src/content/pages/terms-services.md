@@ -5,23 +5,40 @@ description: "this is meta description"
 draft: false
 ---
 
-## Astrofront Solutions License Agreement
+Welcome to MatterHubs.com. By accessing or using our online store, you agree to comply with and be bound by the following terms and conditions. These terms govern your use of our website, the purchase of products, and the services we provide. Please read them carefully before placing any order.  
+## 1. Refund Policy
 
-Your Rights Roxboro Lighting Limited trading as Onlinelightshop is a UK based company and complies with UK consumer law including the Distance Selling Regulations. This means that shopping with Onlinelightshop is safe. With 30 years experience in lighting retailing we aim to give a thorough and relable sevice, you’ll get your items delivered and we’ll sort out any problems you have. Our Terms and Conditions do not affect your statutory rights. Distance Selling Regulations give you the right to cancel an order and return any goods that may already have been dispatched, (see Returns for Refund) up to 7 days from receipt. Our returns policy allows 21 days.
+Refunds are only accepted within 24 hours after placing an order. After this period, we are unable to process refund requests as the order would have entered the processing or shipping stage. 
 
-##### [Download our Returns Form here.](#http://localhost:4321/terms-services)
+Refund requests must be submitted via email to sales@smartcey.com with your order number and reason for the request. Once approved, the refund will be processed within 2-3 business days and will be credited back to the original payment method. 
+
+
+## 2. Return Policy
+
+Returns are accepted within 14 days after purchase. To be eligible for a return: 
+
+The product must be in its original condition, unused, and in its original packaging.
+All included components, accessories, and documentation must be intact.
+Returns must be initiated by contacting our support team at sales@smartcey.com. Customers are responsible for shipping the product back to us. We recommend using a trackable shipping service, as we are not responsible for lost or delayed returns. 
+
+Upon receiving and inspecting the returned product, we will notify you of the approval or rejection of your return. Approved returns will result in a refund or exchange as per your request. 
+
+Please Note: Returns will not be accepted if the product has been damaged due to misuse, improper handling, or unauthorized modifications. 
+
 
 <br/>
 
-### Sales terms and conditions
+## 3. Address Changes
+Address change requests are only accepted within 24 hours after placing the order. After this period, orders are locked in for processing, and we cannot guarantee that changes can be made. 
 
-#### Pricing
+If you realize an error in your shipping address, please contact us immediately at sales@smartcey.com. While we will do our best to accommodate your request, we are not liable for delayed or failed deliveries due to incorrect addresses provided by the customer. 
 
-Prices include VAT (Value Added Tax)\*, standard UK rate 20%. VAT does not apply to orders that are to be shipped outside the E.U. or to Tax Free areas such as the Channel Islands. These areas will be priced and billed with VAT deducted. The prices on the site are shown including VAT.
 
-If you select a currency or a delivery country outside the E.U., prices will be displayed VAT free, for example, an item which costs 19.99 GBP will be shown and billed as 17.00 GBP when it is VAT free.
+## 4. Replacements of Components
 
-While we do our best to ensure prices are up to date and correct, errors may occur and in this case you will be contacted before your order is shipped.
+We do not offer replacements for components or accessories that are misplaced, lost, or damaged by the customer after delivery. 
+
+Customers are advised to carefully inspect the package upon delivery and ensure all components are accounted for. In the unlikely event that an item arrives with missing components, you must notify us within 48 hours of delivery. 
 <br/>
 
 #### Payment
@@ -31,67 +48,36 @@ Onlinelightshop accept most major credit cards for online orders. You will be as
 For offline orders Onlinelightshop accept (£) Sterling Postal Orders, Personal Cheques, (£) Sterling Bank Drafts and (£) Sterling Bank Transfers. We recommend that you do not send cash through the post. Due to varying Exchange Rates all payments made to CRC must be in UK Pounds (£) Sterling.
 <br/>
 
-#### Product Availability
+## 5. Technical Knowledge Requirement
 
 Onlinelightshop endeavours to carry most of the items displayed on the site in stock. If an item you order is out of stock we will contact you with a due date. You may then wish to cancel the order or wait until the item becomes available.
 <br/>
+Our products are designed for customers with a basic level of technical knowledge about smart home devices. While we provide detailed product manuals and technical assistance, customers are expected to set up and operate the products. 
 
-#### Out of Stock Orders
+Returns or refunds will not be accepted if the issue arises from the customer’s lack of technical knowledge or inability to follow the setup instructions. We encourage customers to contact our support team for assistance before initiating any return. 
 
-There are times when items become temporarily out of stock. If you order an 'Out Of Stock' product, we will send out the order to you as soon as the product becomes available again. If we cannot source the item we will contact you to inform you. Your credit card will not be debited until we dispatch the product.
+Technical Support: Our technical support team is available to assist you with any issues. Please reach out via sales@smartcey.com or refer to the product manual for troubleshooting steps. 
 
-There are times when items become temporarily out of stock. If you order an 'Out Of Stock' product, we will send out the order to you as soon as the product becomes available again. If we cannot source the item we will contact you to inform you. Your credit card will not be debited until we dispatch the product.
+## 6. Limitation of Liability
+
+MatterHubs.com is not liable for any direct, indirect, incidental, or consequential damages resulting from the use or inability to use our products. By purchasing our products, you agree that the responsibility for proper installation, use, and maintenance lies with you. 
 <br/>
 
-#### Accuracy of Information
+## 7. Changes in Terms and Conditions
 
-We put a lot of time and effort into describing and photographing the products we sell using manufacturer's websites, catalogues, our own photography studio and often our own descriptions of the products. Although we aim to ensure that every picture and description is 100% accurate, mistakes do occur so let us know if you see or read something that isn’t correct. If you have purchased something based on a picture or description on the website which turns out to be incorrect we will be happy to replace or refund the product (unused).
+MatterHubs.com reserves the right to update or modify these terms and conditions at any time without prior notice. Any changes will be posted on this page, and continued use of our site after such changes indicates your acceptance of the revised terms. 
 <br/>
 
-#### Changes
 
 If we decide to change our Terms and Conditions, we will post those changes on this page so that you are always aware of what information we collect, how we use it and under what circumstances we disclose it.
 <br/>
 
-#### Site Usage
+## Contact Us
 
-Onlinelightshop disclaims damages of any kind, compensatory, direct, indirect or consequential damages, loss of data, income or profit, loss of or damage to property and claims of third parties implied or otherwise relating to use of this site.
+OIf you have any questions or concerns regarding these terms and conditions, please contact our support team: 
+
+Email: sales@smartcey.com 
+Shopify Inbox 
+Business Hours: Monday to Friday, 9 AM - 6 PM (EST) 
+Thank you for choosing MatterHubs.com for your smart home needs. We are committed to providing high-quality products and exceptional service. 
 <br/>
-
-#### Credit Card Security
-
-We take online security extremely seriously and have taken several steps to ensure that your payment information is processed confidentially and accurately. We use Sagepay, a world leader in secure online payments.
-
-Onlinelightshop offer the use of secure servers where information is protected by Secure Sockets Layer (SSL), the industry standard encryption technology. SSL works with Netscape Navigator, Microsoft Internet Explorer, AOL and other browsers. This encryption makes it virtually impossible for unauthorised parties to read any information that you send us.
-<br/>
-
-#### Price and Payment
-
-- The Price of the Goods shall be that stipulated on the Seller’s Website. The Price is NOT INCLUSIVE of VAT. The Price EXCLUDES delivery charges.
-- The total purchase price, including VAT and delivery charges, if any, will be displayed in the Buyer’s shopping cart prior to confirming the order.
-- Payment of the Price plus VAT and delivery charges must be made in full before dispatch of the Goods.
-- Payment must be made by secure credit or debit transactions (please see Privacy Statement).
-  <br/>
-
-#### Warranty
-
-- The Seller warrants that the Goods will at the time of dispatch correspond to the description given by the Seller.
-- After 7 Working days from the date of delivery goods will be repaired or replaced dependant upon the nature of the fault.
-  <br/>
-
-#### Delivery
-
-- Goods supplied within the UK will normally be delivered within 3-5 working days of acceptance of order.
-- Where a specific delivery date has been agreed, and where this delivery date cannot be met, the Buyer will be notified and given the opportunity to agree a new delivery date or cancel the order.
-- Title and risk in the Goods shall pass to the Buyer upon delivery of the Goods.
-  <br/>
-
-#### Cancellation and Return
-
-The Buyer shall inspect the Goods immediately upon receipt and shall notify the Seller via the designated Returns Submission Form within 7 working days of delivery if the Goods are damaged or do not comply with any of the Contract. If the Buyer fails to do so the Buyer shall be deemed to have accepted the Goods.
-
-Where a claim of defect or damage is made the Seller shall be responsible for the recovery of the Goods from the Buyer. The Buyer shall be entitled to a full refund (including delivery costs) if the Goods are in fact defective.
-
-The Seller reserves the right to refuse a refund if:
-
-The Goods have been used.

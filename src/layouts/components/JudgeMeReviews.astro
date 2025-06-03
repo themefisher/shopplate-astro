@@ -13,32 +13,50 @@ const { productId, shopDomain, apiToken, limit = 5 } = Astro.props;
 // Fetch reviews from Judge.me API
 const fetchJudgeMeReviews = async () => {
   try {
-    const apiUrl = `https://judge.me/api/v1/reviews?api_token=${apiToken}&shop_domain=${shopDomain}&external_product_id=${productId}&per_page=${limit}`;
+    // Add debugging to see exactly what we're passing
+    console.log("Fetching reviews with params:", { shopDomain, productId, limit });
+    
+    // Extract numeric ID if productId is in the gid format
+    const numericProductId = productId.includes("gid://shopify/Product/") 
+      ? productId.replace("gid://shopify/Product/", "") 
+      : productId;
+    
+    const apiUrl = `https://judge.me/api/v1/reviews?api_token=${apiToken}&shop_domain=${shopDomain}&external_product_id=${numericProductId}&per_page=${limit}`;
+    console.log("API URL:", apiUrl);
+    
     const response = await fetch(apiUrl);
-
+    
+    console.log("Response status:", response.status);
+    
     if (!response.ok) {
       throw new Error(`Failed to fetch reviews: ${response.status}`);
     }
-
-    const { reviews = [] } = await response.json();
-    return reviews;
+    
+    const data = await response.json();
+    console.log("API response data:", data);
+    
+    // Check if the response contains reviews
+    if (!data.reviews || !Array.isArray(data.reviews)) {
+      console.warn("No reviews array in response:", data);
+      return [];
+    }
+    
+    return data.reviews;
   } catch (error) {
     console.error("Error fetching JudgeMe reviews:", error);
     return [];
   }
 };
 
-// Fetch and transform reviews based on productId
+// Transform reviews - simplified filter logic
 const transformReviews = (reviews: any[]) => {
-  const numericProductId = productId.replace("gid://shopify/Product/", "");
-
+  console.log("Transforming reviews:", reviews.length);
+  
+  // Skip additional filtering by product ID since we're already fetching by product ID
   return reviews
-    .filter(
-      ({ product_external_id }) => product_external_id == numericProductId,
-    )
     .filter(({ rating }) => rating > 3)
     .map(({ pictures, reviewer, created_at, rating, body }) => ({
-      avatar: pictures?.[0]?.urls.original || "/default-avatar.png",
+      avatar: pictures?.[0]?.urls?.original || "/default-avatar.png",
       name: reviewer?.name || "Anonymous",
       date: new Date(created_at).toLocaleDateString(),
       rating: rating ?? 0,
@@ -47,9 +65,9 @@ const transformReviews = (reviews: any[]) => {
 };
 
 const judgeMeReviews = await fetchJudgeMeReviews();
+console.log(`Got ${judgeMeReviews.length} reviews from API`);
 const reviews = transformReviews(judgeMeReviews);
-
-// console.log(reviews)
+console.log(`After transformation: ${reviews.length} reviews remaining`);
 ---
 
 <div class="container mx-auto px-4 py-8 mb-12">

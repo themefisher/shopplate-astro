@@ -164,6 +164,7 @@ export type ShopifyCart = {
 };
 
 export type ShopifyCollection = {
+  id: any;
   handle: string;
   title: string;
   description: string;

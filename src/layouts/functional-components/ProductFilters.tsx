@@ -6,14 +6,14 @@ import ShowTags from "./product/ShowTags";
 import RangeSlider from "./rangeSlider/RangeSlider";
 
 const ProductFilters = ({
-  categories,
+  collections,
   vendors,
   tags,
   maxPriceData,
   vendorsWithCounts,
   categoriesWithCounts,
 }: {
-  categories: ShopifyCollection[];
+  collections: ShopifyCollection[];
   vendors: { vendor: string; productCount: number }[];
   tags: string[];
   maxPriceData: { amount: string; currencyCode: string };
@@ -47,7 +47,7 @@ const ProductFilters = ({
     updateSearchParams(newParams);
   };
 
-  const handleCategoryClick = (handle: string) => {
+  const handleCollectionClick = (handle: string) => {
     const newParams = new URLSearchParams(searchParams.toString());
 
     if (handle === selectedCategory) {
@@ -69,29 +69,29 @@ const ProductFilters = ({
       </div>
 
       <div>
-        <h5 className="mb-2 mt-4 lg:mt-6 lg:text-xl">Product Categories</h5>
+        <h5 className="mb-2 mt-4 lg:mt-6 lg:text-xl">Product Collections</h5>
         <hr className="border-border dark:border-darkmode-border" />
         <ul className="mt-4 space-y-4">
-          {categories.map((category) => (
+          {collections.map((collection) => (
             <li
-              key={category.handle}
-              className={`flex items-center justify-between cursor-pointer ${selectedCategory === category.handle
+              key={collection.handle}
+              className={`flex items-center justify-between cursor-pointer ${selectedCategory === collection.handle
                 ? "text-text-dark dark:text-darkmode-text-dark font-semibold"
                 : "text-text-light dark:text-darkmode-text-light"
                 }`}
-              onClick={() => handleCategoryClick(category.handle)}
+              onClick={() => handleCollectionClick(collection.handle)}
             >
-              {category.title}
+              {collection.title}
               {searchParams.has("c") && !searchParams.has("b") ? (
-                <span>({category?.products?.edges.length || 0})</span>
+                <span>({collection?.products?.edges.length || 0})</span>
               ) : (
                 <span>
                   {categoriesWithCounts.length > 0
                     ? `(${categoriesWithCounts.find(
-                      (c) => c.category === category.title
+                      (c) => c.category === collection.title
                     )?.productCount || 0
                     })`
-                    : `(${category?.products?.edges.length || 0})`}
+                    : `(${collection?.products?.edges.length || 0})`}
                 </span>
               )}
             </li>

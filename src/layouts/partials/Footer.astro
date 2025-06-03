@@ -14,17 +14,18 @@ export interface ISocial {
 }
 ---
 
-<footer class="bg-light dark:bg-darkmode-light">
+<footer class="bg-[#242833]">
   <div class="container">
     <div
       class="flex flex-col md:flex-row justify-between items-center py-10 md:pt-20 md:pb-14"
     >
-      <Logo />
+      <!-- <Logo  /> -->
+       <img class="w-32" src="/images/logo-darkmode.png" alt="logo" />
 
       <ul class="flex gap-x-4 lg:gap-x-10 my-3">
         {
           menu.footer.map((menu) => (
-            <li class="footer-link">
+            <li class="footer-link text-white">
               <a href={menu.url}>{menu.name}</a>
             </li>
           ))
@@ -58,14 +59,14 @@ export interface ISocial {
         <ul class="flex gap-x-4">
           {
             menu.footerCopyright.map((menu) => (
-              <li class="footer-link">
+              <li class="footer-link text-white">
                 <a href={menu.url}>{menu.name}</a>
               </li>
             ))
           }
         </ul>
 
-        <p class="text-sm font-light" set:html={markdownify(copyright)} />
+        <p class="text-sm font-light text-white" set:html={markdownify(copyright)} />
       </div>
     </div>
   </div>

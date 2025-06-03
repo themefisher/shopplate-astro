@@ -6,7 +6,6 @@ import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 const HeroSlider = ({ products }: { products: Product[] }) => {
-
   // console.log(products)
   return (
     <>
@@ -21,7 +20,6 @@ const HeroSlider = ({ products }: { products: Product[] }) => {
           delay: 5000,
           disableOnInteraction: false,
         }}
-        
         modules={[Pagination]}
       >
         {products?.map((item: Product) => (
@@ -35,7 +33,7 @@ const HeroSlider = ({ products }: { products: Product[] }) => {
                     </p>
                   )} */}
                   <div className="row">
-                    <h1 className="mb-4 lg:mb-10 col-10 sm:col-8 lg:col-12 mx-auto">
+                    <h1 className="text-xl sm:text-2xl lg:text-4xl mb-4 lg:mb-10 col-10 sm:col-8 lg:col-12 mx-auto">
                       {item.title}
                     </h1>
                   </div>

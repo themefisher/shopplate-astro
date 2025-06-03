@@ -1,10 +1,10 @@
 {
   "site": {
-    "title": "Astrofront",
-    "base_url": "https://astrofront.vercel.app/",
+    "title": "Matter, Thread, Zigbee & HomeKit Hubs | Control Matter Enabled Devices",
+    "base_url": "https://shop.matterhubs.com/",
     "base_path": "/",
     "trailing_slash": false,
-    "favicon": "/images/favicon.png",
+    "favicon": "/images/favi.png",
     "logo": "/images/logo.png",
     "logo_darkmode": "/images/logo-darkmode.png",
     "logo_width": "150",
@@ -22,7 +22,7 @@
 
   "params": {
     "contact_form_action": "#",
-    "copyright": "Designed And Developed by [Themefisher](https://themefisher.com/)"
+    "copyright": "Designed And Developed by [MatterHubs](https://matterhubs.com/)"
   },
 
   "navigation_button": {
@@ -34,15 +34,17 @@
   "metadata": {
     "meta_author": "Themefisher",
     "meta_image": "/images/og-image.png",
-    "meta_description": "Shopify Storefront Boilerplate"
+    "meta_description": "Buy all Matter Hubs, Matter Bridges, Matter Controllers, Matter Devices, & more. Add any Matter Devices to any ecosystem, like HomeKit, Alexa, & SmartThings"
   },
 
   "shopify": {
     "currencySymbol": "$",
     "currencyCode": "USD",
     "collections": {
-      "hero_slider": "homeKit-hubs",
-      "featured_products": "homeKit-hubs"
+      "hero_slider": "best-selling-products",
+      "featured_products": "matter-enabled-devices",
+      "best_selling_products": "best-selling-products"
+
     }
   }
 }

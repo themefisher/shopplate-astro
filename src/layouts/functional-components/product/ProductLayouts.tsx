@@ -119,7 +119,7 @@ const ProductLayouts = ({
                 >
                   <div className="pb-8">
                     <ProductFilters
-                      categories={categories}
+                      collections={categories}
                       vendors={vendors}
                       tags={tags}
                       maxPriceData={maxPriceData}

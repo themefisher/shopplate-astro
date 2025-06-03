@@ -9,13 +9,18 @@ import remarkToc from "remark-toc";
 import config from "./src/config/config.json";
 import vercel from "@astrojs/vercel";
 import node from '@astrojs/node';
+import sitemap from '@astrojs/sitemap';
+
+
 
 // https://astro.build/config
 export default defineConfig({
-  site: config.site.base_url ? config.site.base_url : "http://examplesite.com",
+  site: config.site.base_url ? config.site.base_url : "http://shop.matterhubs.com",
   base: config.site.base_path ? config.site.base_path : "/",
   trailingSlash: config.site.trailing_slash ? "always" : "never",
   output: "server",
+  integrations: [sitemap()],
+
 
   vite: { plugins: [tailwindcss()], envPrefix: ['PUBLIC_', 'JUDGEME_'], },
   integrations: [
