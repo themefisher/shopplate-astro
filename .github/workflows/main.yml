@@ -1,42 +1,74 @@
 name: MatterHubs
-
 on:
   push:
     branches:
       - main
-
 jobs:
   build:
     runs-on: ubuntu-latest
     name: Build and Deploy
-
     env:
       PUBLIC_SHOPIFY_API_SECRET_KEY: ${{ secrets.PUBLIC_SHOPIFY_API_SECRET_KEY }}
       PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN: ${{secrets.PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN }}
       PUBLIC_SHOPIFY_STORE_DOMAIN: ${{secrets.PUBLIC_SHOPIFY_STORE_DOMAIN }}
       JUDGEME_SHOP_DOMAIN: ${{secrets.JUDGEME_SHOP_DOMAIN }}
       JUDGEME_API_TOKEN: ${{secrets.JUDGEME_API_TOKEN }}
-
     steps:
       - uses: actions/checkout@v3
-
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 20
-
       - name: Install Dependencies
-        run: npm i
-
+        run: npm ci
       - name: Build Astro Site
         run: npm run build
-
-      - name: Deploy via SCP
-        uses: nogsantos/scp-deploy@master
+      - name: Stop Astro service
+        uses: appleboy/ssh-action@v1.0.3
         with:
-          src: ./dist/*
           host: ${{ secrets.SSH_HOST }}
-          remote: ${{ secrets.SSH_DIR }}
-          port: ${{ secrets.SSH_PORT }}
-          user: ${{ secrets.SSH_USER }}
+          username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            sudo systemctl stop matterhubs || true
+      - name: Deploy package.json
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          source: "package.json,package-lock.json"
+          target: "/var/www/dev.matterhubs.com"
+      - name: Deploy build files
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          source: "dist/*"
+          target: "/var/www/dev.matterhubs.com"
+          rm: true
+      - name: Install production dependencies
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            cd /var/www/dev.matterhubs.com
+            npm ci --only=production
+      - name: Start Astro service
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            sudo systemctl start matterhubs
+            sudo systemctl status matterhubs
+            sudo systemctl reload nginx
