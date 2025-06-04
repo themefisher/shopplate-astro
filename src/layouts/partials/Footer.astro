@@ -20,32 +20,11 @@ export interface ISocial {
       class="flex flex-col md:flex-row justify-between items-center py-10 md:pt-20 md:pb-14"
     >
       <!-- <Logo  /> -->
-       <img class="w-32" src="/images/logo-darkmode.png" alt="logo" />
-
-      <ul class="flex gap-x-4 lg:gap-x-10 my-3">
+       <img class="w-32" src="/images/logo-darkmode.png" alt="logo" />      <ul class="flex gap-x-4 lg:gap-x-10 my-3">
         {
           menu.footer.map((menu) => (
             <li class="footer-link text-white">
               <a href={menu.url}>{menu.name}</a>
-            </li>
-          ))
-        }
-      </ul>
-
-      {/* social share */}
-      <ul class="social-icons social-icons-footer">
-        {
-          social?.main.map((social: ISocial) => (
-            <li>
-              <a
-                aria-label={social.name}
-                href={social.link}
-                target="_blank"
-                rel="noopener noreferrer nofollow"
-              >
-                <span class="sr-only">{social.name}</span>
-                <DynamicIcon className="inline-block" icon={social.icon} />
-              </a>
             </li>
           ))
         }
