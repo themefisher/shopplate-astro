@@ -200,8 +200,9 @@ const ProductGrid = ({
           )
         })}
       </div>
+
       {pageInfo?.hasNextPage && (
-        <div ref={loaderRef} className="text-center py-4 flex justify-center">
+        <div ref={loaderRef} className="text-center pt-10 pb-4 flex justify-center">
           {loading ? <BiLoaderAlt className={`animate-spin`} size={30} /> : "Scroll for more"}
         </div>
       )}

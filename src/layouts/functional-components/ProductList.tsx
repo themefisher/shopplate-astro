@@ -208,8 +208,8 @@ const ProductList = ({
       </div>
 
       {pageInfo?.hasNextPage && (
-        <div ref={loaderRef} className="text-center py-4">
-          {loading ? <BiLoaderAlt className={`animate-spin`} size={30} /> : 'Scroll for more'}
+        <div ref={loaderRef} className="text-center pt-10 pb-4 w-full">
+          {loading ? <BiLoaderAlt className={`animate-spin mx-auto`} size={30} /> : 'Scroll for more'}
         </div>
       )}
     </div>

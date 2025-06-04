@@ -10,16 +10,16 @@
 
 <p align=center>
 
- <a href="https://github.com/withastro/astro/releases/tag/astro@5.6.1" alt="Contributors">
-    <img src="https://img.shields.io/static/v1?label=ASTRO&message=5.6&color=BC52EE&logo=astro" />
+ <a href="https://github.com/withastro/astro/releases/tag/astro@5.8.1" alt="Contributors">
+    <img src="https://img.shields.io/static/v1?label=ASTRO&message=5.8&color=BC52EE&logo=astro" />
 </a>
-  <a href="https://github.com/themefisher/shopplate/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/themefisher/shopplate" alt="license"></a>
+  <a href="https://github.com/themefisher/shopplate-astro/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/themefisher/shopplate-astro" alt="license"></a>
 
-  <img src="https://img.shields.io/github/languages/code-size/themefisher/shopplate" alt="code size">
+  <img src="https://img.shields.io/github/languages/code-size/themefisher/shopplate-astro" alt="code size">
 
   <a href="https://github.com/themefisher/shopplate/graphs/contributors">
-    <img src="https://img.shields.io/github/contributors/themefisher/shopplate" alt="contributors"></a>
+    <img src="https://img.shields.io/github/contributors/themefisher/shopplate-astro" alt="contributors"></a>
 </p>
 
 ## 📌 Key Features
@@ -61,10 +61,10 @@
 ### 📦 Dependencies
 
 - shopify
-- astro 5.6+
+- astro 5.8+
 - node v20.10+
 - npm v10.2+
-- tailwind v4+
+- tailwind v4.1+
 
 <!-- get Shopify storefront API access token-->
 
