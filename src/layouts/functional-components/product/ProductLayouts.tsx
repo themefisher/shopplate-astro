@@ -1,3 +1,4 @@
+import { setLayoutView } from "@/cartStore";
 import { type SortFilterItem, sorting } from "@/lib/constants";
 import { createUrl } from "@/lib/utils";
 import React, { Suspense, useEffect, useState } from "react";
@@ -24,7 +25,9 @@ const ProductLayouts = ({
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    setIsListView(params.get("layout") === "list");
+    const isListLayout = params.get("layout") === "list";
+    setIsListView(isListLayout);
+    setLayoutView(isListLayout ? "list" : "card");
   }, []);
 
   useEffect(() => {
@@ -61,8 +64,10 @@ const ProductLayouts = ({
     const params = new URLSearchParams(window.location.search);
     if (layoutType === "list") {
       params.set("layout", "list");
+      setLayoutView("list");
     } else {
       params.delete("layout");
+      setLayoutView("card");
     }
 
     const newUrl = createUrl("/products", params);
