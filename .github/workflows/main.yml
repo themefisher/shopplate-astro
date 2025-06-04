@@ -24,7 +24,7 @@ jobs:
       - name: Build Astro Site
         run: npm run build
       
-      - name: Stop Astro service
+      - name: Deploy everything
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -32,9 +32,17 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
+            # Stop the service
             sudo systemctl stop matterhubs || true
+            
+            # Create deployment directory if it doesn't exist
+            mkdir -p /var/www/dev.matterhubs.com
+            cd /var/www/dev.matterhubs.com
+            
+            # Remove old files except node_modules
+            find . -maxdepth 1 ! -name 'node_modules' ! -name '.' -exec rm -rf {} +
       
-      - name: Deploy package files
+      - name: Copy package files
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -42,20 +50,21 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
           source: "package.json,package-lock.json"
-          target: "/var/www/dev.matterhubs.com/"
+          target: "/var/www/dev.matterhubs.com"
+          overwrite: true
       
-      - name: Deploy build files
+      - name: Copy build files  
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
-          source: "dist/*"
-          target: "/var/www/dev.matterhubs.com/"
-          rm: true
+          source: "dist"
+          target: "/var/www/dev.matterhubs.com"
+          overwrite: true
       
-      - name: Install production dependencies
+      - name: Setup and start service
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -64,17 +73,29 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             cd /var/www/dev.matterhubs.com
-            npm i --omit=dev
-      
-      - name: Start Astro service
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: ${{ secrets.SSH_PORT }}
-          script: |
+            
+            # Debug - check what we have
+            echo "=== Directory contents ==="
+            ls -la
+            echo "=== Package.json exists? ==="
+            test -f package.json && echo "YES" || echo "NO"
+            
+            # Move build files to root
+            if [ -d "dist" ]; then
+              mv dist/* . 2>/dev/null || true
+              rmdir dist 2>/dev/null || true
+            fi
+            
+            # Install dependencies
+            if [ -f package.json ]; then
+              npm i --omit=dev
+            else
+              echo "ERROR: package.json not found!"
+              exit 1
+            fi
+            
+            # Start service
             sudo systemctl start matterhubs
-            sleep 5
+            sleep 3
             sudo systemctl status matterhubs --no-pager
             sudo systemctl reload nginx
