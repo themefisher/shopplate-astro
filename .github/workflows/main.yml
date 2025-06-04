@@ -26,7 +26,7 @@ jobs:
           node-version: 20
 
       - name: Install Dependencies
-        run: npm ci
+        run: npm i
 
       - name: Build Astro Site
         run: npm run build
