@@ -1,0 +1,42 @@
+name: ATHDeployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Build and Deploy
+
+    env:
+      PUBLIC_SHOPIFY_API_SECRET_KEY: "9ec97d500f7faca4729cc2baec12143a"
+      PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN: "c7209f767cbdf7fb57b38aa9c59301b5"
+      PUBLIC_SHOPIFY_STORE_DOMAIN: "matterhubs.myshopify.com"
+      JUDGEME_SHOP_DOMAIN: "matter-hubs.myshopify.com"
+      JUDGEME_API_TOKEN: "1xZ6Q_JDK88S4j6MskAWiPJFCAU"
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build Astro Site
+        run: npm run build
+
+      - name: Deploy via SCP
+        uses: nogsantos/scp-deploy@master
+        with:
+          src: ./dist/*
+          host: ${{ secrets.SSH_HOST }}
+          remote: ${{ secrets.SSH_DIR }}
+          port: ${{ secrets.SSH_PORT }}
+          user: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
