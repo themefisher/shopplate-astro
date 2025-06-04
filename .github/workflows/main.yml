@@ -60,7 +60,7 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             cd /var/www/dev.matterhubs.com
-            npm ci --only=production
+            npm i --only=production
       - name: Start Astro service
         uses: appleboy/ssh-action@v1.0.3
         with:
