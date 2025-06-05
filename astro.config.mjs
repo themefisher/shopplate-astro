@@ -15,9 +15,10 @@ export default defineConfig({
   base: config.site.base_path || "/",
   trailingSlash: config.site.trailing_slash ? "always" : "never",
 
-  adapter: node({ mode: "standalone" }),
   output: "server",
-
+  adapter: node({
+    mode: "middleware",
+  }),
   vite: {
     plugins: [tailwindcss()],
     envPrefix: ["PUBLIC_", "JUDGEME_"],
@@ -41,10 +42,7 @@ export default defineConfig({
   ],
 
   markdown: {
-    remarkPlugins: [
-      remarkToc,
-      [remarkCollapse, { test: "Table of contents" }],
-    ],
+    remarkPlugins: [remarkToc, [remarkCollapse, { test: "Table of contents" }]],
     shikiConfig: {
       theme: "one-dark-pro",
       wrap: true,
