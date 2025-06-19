@@ -1,154 +1,191 @@
-<h1 align=center>Astrofront | AstroJs + Shopify + Tailwind CSS + TypeScript Starter and Boilerplate</h1>
+# MatterHubs - Astro with Shopify
 
-<p align=center>A free, production-ready astro.js template powered by Tailwind CSS and TypeScript, specifically designed for Shopify. Utilizes the Shopify Storefront API through GraphQL and providing everything you need to jumpstart your Astro project and save valuable time.</p>
+A modern, high-performance e-commerce website built with Astro and integrated with Shopify. This project uses Tailwind CSS for styling, React for interactive components, and offers several deployment options.
 
-<p align=center>Made with ♥ by <a href="https://themefisher.com/">Themefisher</a></p>
-<p align=center> If you find this project useful, please give it a ⭐ to show your support. </p>
+![MatterHubs](public/images/logo.png)
 
-<h2 align="center"> <a target="_blank" href="https://astrofront.vercel.app/" rel="nofollow">👀 Demo</a> | <a  target="_blank" href="https://pagespeed.web.dev/analysis/https-astrofront-vercel-app/qs3wscwqpq?form_factor=desktop">Page Speed (99%)🚀</a>
-</h2>
+## Features
 
-<p align=center>
+- 🚀 **Built with Astro**: Leveraging Astro's server-side rendering for optimal performance
+- 🛒 **Shopify Integration**: Full integration with Shopify for product management, cart, and checkout
+- 🎨 **Tailwind CSS**: Modern, responsive UI with Tailwind CSS
+- ⚛️ **React Components**: Interactive UI components built with React
+- 🌙 **Dark Mode Support**: Integrated dark/light theme switching
+- 📱 **Fully Responsive**: Optimized for all device sizes
+- 🔍 **SEO Optimized**: Built-in SEO best practices
+- 🚤 **Fast Page Load**: Optimized for core web vitals
+- 🌐 **Multiple Deployment Options**: Docker, VPS, Vercel, or Netlify deployment options
 
- <a href="https://github.com/withastro/astro/releases/tag/astro@5.4.2" alt="Contributors">
-    <img src="https://img.shields.io/static/v1?label=ASTRO&message=5.4&color=BC52EE&logo=astro" />
-</a>
+## Prerequisites
 
-  <a href="https://github.com/themefisher/astrofront/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/themefisher/astrofront" alt="license"></a>
+- Node.js (v18 or later)
+- Yarn or npm
+- Shopify store with API access
 
-  <img src="https://img.shields.io/github/languages/code-size/themefisher/astrofront" alt="code size">
+## Installation
 
-  <a href="https://github.com/themefisher/astrofront/graphs/contributors">
-    <img src="https://img.shields.io/github/contributors/themefisher/astrofront" alt="contributors"></a>
-</p>
-
-## 📌 Key Features
-
-- 🌐 Dynamic Products from Shopify Storefront API
-- 💸 Checkout and Payments with Shopify
-- 🌞 Automatic Light/Dark Mode
-- 🚀 Fetching and Caching Paradigms
-- 🔗 Server Actions for Mutations
-- 🔐 User Authentication
-- 🧩 Similar Products Suggestions
-- 🔍 Search, Sort, Different Views Functionality
-- 🏷️ Tags & Categories & Vendors & Price Range & Product Variants Functionality
-- 🖼️ Single Product Image Zoom, Hover Effect, Slider
-- 🛒 Cart & Easy editing options for cart items
-- 📝 Product Description on Multiple Tabs
-- 🔗 Netlify Setting Pre-configured
-- 📞 Support Contact Form
-- 📱 Fully Responsive
-- 🔄 Dynamic Home Banner Slider
-- 📝 Write and Update Content in Markdown / MDX
-- ⌛ Infinite Product Load on Scrolling
-
-### 📄 10+ Pre-designed Pages
-
-- 🏠 Homepage
-- 👤 About
-- 📞 Contact
-- 🛍️ Products
-- 📦 Product Single
-- 💡 Terms of services
-- 📄 Privacy Policy
-- 🔐 Login
-- 🔑 Register
-- 🚫 Custom 404
-
-## 🚀 Getting Started
-
-### 📦 Dependencies
-
-- shopify
-- astro 5.4+
-- node v20.10+
-- npm v10.2+
-- tailwind v4+
-
-<!-- get Shopify storefront API access token-->
-
-## 🛒 Retrieve Shopify Token & Add Demo Products
-
-- To get the tokens needed, create a Shopify partner account.
-  ![Screenshot_1](https://raw.githubusercontent.com/tfmurad/images-shopify-commerce/refs/heads/main/1.png)
-
-- Now go to 'stores' and select 'Add store.' Create a development store using the option 'Create development store'.
-  ![Screenshot_2](https://raw.githubusercontent.com/tfmurad/images-shopify-commerce/refs/heads/main/2.png)
-
-- Click on import products.
-  ![Screenshot_3](https://raw.githubusercontent.com/tfmurad/images-shopify-commerce/refs/heads/main/3.png)
-
-- Locate the 'products' CSV file in the public folder of the repository and upload it for demo products.
-  ![Screenshot_4](https://raw.githubusercontent.com/tfmurad/images-shopify-commerce/refs/heads/main/4.png)
-
-- On the admin dashboard, click on ‘Settings’ at the bottom of the left sidebar.
-  ![Screenshot_5](https://raw.githubusercontent.com/tfmurad/images-shopify-commerce/refs/heads/main/5.png)
-
-- On the Settings page, click on ‘Apps and sales channels’ on the left sidebar.
-  ![Screenshot_6](https://raw.githubusercontent.com/tfmurad/images-shopify-commerce/refs/heads/main/6.png)
-
-- In the Apps and sales channels page that opens, click on ‘Develop apps’ on the top right.
-  ![Screenshot_7](https://raw.githubusercontent.com/tfmurad/images-shopify-commerce/refs/heads/main/7.png)
-
-- Now, on the App development page that opens, click on ‘Create an app’.
-  ![Screenshot_8](https://raw.githubusercontent.com/tfmurad/images-shopify-commerce/refs/heads/main/8.png)
-
-- A ‘Create an app’ popup opens. Fill in any name in the ‘App Name’ text box. In the App Developer text box, your name and email id is automatically fetched. Else type in the same email id you used while signing up for the Shopify store.
-  ![Screenshot_9](https://raw.githubusercontent.com/tfmurad/images-shopify-commerce/refs/heads/main/9.png)
-
-- Next, click on ‘Configure’ in the Storefront API integration section.
-  ![Screenshot_10](https://raw.githubusercontent.com/tfmurad/images-shopify-commerce/refs/heads/main/10.png)
-
-- In the Storefront API access scopes, select and check all the boxes and click on ‘Save’ and then ‘Install app’.
-  ![Screenshot_11](https://raw.githubusercontent.com/tfmurad/images-shopify-commerce/refs/heads/main/11.png)
-
-- Navigate to the 'API credentials' tab and locate three essential pieces of information. Subsequently, update your `.env` file by replacing the placeholder quotes("") in the `.env.example` file with your Shopify credentials.
-  ![Screenshot_12](https://raw.githubusercontent.com/tfmurad/images-shopify-commerce/refs/heads/main/12.png)
-
-- When adding your product, use the same alt title for images with the same color. This helps the first image appear as the color variant in the selector.
-  ![Screenshot_13](https://raw.githubusercontent.com/tfmurad/images-shopify-commerce/refs/heads/main/13.png)
-  ![Screenshot_14](https://raw.githubusercontent.com/tfmurad/images-shopify-commerce/refs/heads/main/14.png)
-
-- We have the option to create additional collections for products.
-  ![Screenshot_15](https://raw.githubusercontent.com/tfmurad/images-shopify-commerce/refs/heads/main/15.png)
-
-### 👉 Install Dependencies
+1. Clone the repository:
 
 ```bash
+git clone https://github.com/yourusername/astrofront-astro.git
+cd astrofront-astro
+```
+
+2. Install dependencies:
+
+```bash
+yarn install
+# or
 npm install
 ```
 
-### 👉 Development Command
+3. Set up environment variables:
+   
+Create a `.env` file in the root directory with the following variables:
+
+```env
+PUBLIC_SHOPIFY_STORE_DOMAIN=your-store.myshopify.com
+PUBLIC_SHOPIFY_STOREFRONT_API_TOKEN=your_storefront_api_token
+```
+
+4. Start the development server:
 
 ```bash
+yarn dev
+# or
 npm run dev
 ```
 
-### 👉 Build Command
+## Project Structure
 
-```bash
-npm run build
+```
+├── public/             # Static files
+├── src/
+│   ├── components/     # UI components
+│   ├── config/         # Site configuration
+│   ├── content/        # Markdown content for pages
+│   ├── layouts/        # Page layouts
+│   ├── lib/            # Utility functions and Shopify API
+│   ├── pages/          # Page components
+│   ├── styles/         # Global styles
+│   └── types/          # TypeScript type definitions
+├── astro.config.mjs    # Astro configuration
+├── tailwind.config.cjs # Tailwind configuration
+└── tsconfig.json       # TypeScript configuration
 ```
 
-<!-- reporting issue -->
+## Configuration
 
-## 🐞 Reporting Issues
+### Site Configuration
 
-We use GitHub Issues as the official bug tracker for this Template. Please Search [existing issues](https://github.com/themefisher/astrofront/issues). It’s possible someone has already reported the same problem.
-If your problem or idea has not been addressed yet, feel free to [open a new issue](https://github.com/themefisher/astrofront/issues).
+Edit the site configuration in `src/config/config.json`:
 
-<!-- licence -->
+```json
+{
+  "site": {
+    "title": "Your Site Title",
+    "base_url": "https://yourdomain.com",
+    "base_path": "/",
+    "trailing_slash": false
+  },
+  "shopify": {
+    "collections": {
+      "featured_products": "gid://shopify/Collection/your-collection-id",
+      "best_selling_products": "gid://shopify/Collection/your-collection-id",
+      "hero_slider": "gid://shopify/Collection/your-collection-id"
+    }
+  }
+}
+```
 
-## 📝 License
+### Menu Configuration
 
-Copyright (c) 2024 - Present, Designed & Developed by [Themefisher](https://themefisher.com/)
+Edit the menu configuration in `src/config/menu.json`.
 
-**Code License:** Released under the [MIT](https://github.com/themefisher/astrofront/blob/main/LICENSE) license.
+## Deployment Options
 
-**Image license:** The images are only for demonstration purposes. They have their license, we don't have permission to share those images.
+### Option 1: Deploy on a VPS with Node.js
 
-## 💻 Need Custom Development Services?
+Follow the detailed guide on [Serving an SSR Astro App on a VPS](https://jimmysweeney.page/blog/serve-ssr-astro-app-vps/) for step-by-step instructions.
 
-If you need a custom theme, theme customization, or complete website development services from scratch you can [Hire Us](https://themefisher.com/).
+1. SSH into your VPS
+2. Clone the repository
+3. Install dependencies with `yarn install`
+4. Build the project with `yarn build`
+5. Set up a process manager like PM2:
+
+```bash
+npm install -g pm2
+pm2 start dist/server/entry.mjs --name "astro-app"
+pm2 startup
+pm2 save
+```
+
+6. Set up Nginx as a reverse proxy (sample configuration provided in the article)
+
+### Option 2: Deploy with Docker
+
+The project includes a Dockerfile for containerized deployment:
+
+1. Build the Docker image:
+
+```bash
+docker build -t astrofront-astro .
+```
+
+2. Run the container:
+
+```bash
+docker run -p 80:80 astrofront-astro
+```
+
+### Option 3: Deploy on Vercel
+
+1. Install the Vercel CLI:
+
+```bash
+npm install -g vercel
+```
+
+2. Deploy to Vercel:
+
+```bash
+vercel
+```
+
+### Option 4: Deploy on Netlify
+
+1. Install the Netlify CLI:
+
+```bash
+npm install -g netlify-cli
+```
+
+2. Deploy to Netlify:
+
+```bash
+netlify deploy
+```
+
+## Customization
+
+### Adding New Pages
+
+1. Create a new `.astro` file in the `src/pages/` directory
+2. Or create a new markdown file in `src/content/` for content-based pages
+
+### Modifying the Theme
+
+Edit the Tailwind configuration in `tailwind.config.cjs` and theme colors in `src/config/theme.json`.
+
+### Adding Custom Fonts
+
+Edit the font configuration in the Astro configuration file (`astro.config.mjs`).
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
