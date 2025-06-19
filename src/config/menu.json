@@ -40,6 +40,14 @@
     {
       "name": "Terms of Service",
       "url": "/terms-services"
+    },
+    {
+      "name": "Refund Policy",
+      "url": "/refund-policy"
+    },
+    {
+      "name": "Shipping Policy",
+      "url": "/shipping-policy"
     }
   ]
 }

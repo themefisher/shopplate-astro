@@ -32,8 +32,12 @@ const DynamicIcon: FC<IDynamicIcon> = ({ icon, ...props }) => {
 };
 
 const getIconLibrary = (icon: string): IconMap | undefined => {
+  // Handle all Fa icons regardless of length of prefix (Fa, FaTruck, etc)
+  if (icon.startsWith('Fa')) {
+    return iconLibraries['fa'];
+  }
+  
   const libraryKey = icon.substring(0, 2).toLowerCase();
-
   return iconLibraries[libraryKey];
 };
 
