@@ -128,7 +128,6 @@ const categories = await getCollections();
 const vendors = await getVendors({});
 // can filter coregories and tags
 
-
 const tags = [
   ...new Set(
     (
@@ -142,7 +141,7 @@ const specificCollectionIds = [
   "matter-supported-devices",
   "aeotec-homekit",
   "zigbee-hubs",
-  "matter-controllers"
+  "matter-controllers",
 
   // Add more collection IDs as needed
 ];
@@ -154,7 +153,7 @@ const initialProducts = productsData.products;
 const initialPageInfo = productsData.pageInfo;
 ---
 
-<Base title="Products">
+<Base title="Matterhubs all Products">
   <ProductLayouts
     categories={filteredCategories}
     vendors={vendors}
@@ -164,8 +163,12 @@ const initialPageInfo = productsData.pageInfo;
     categoriesWithCounts={categoriesWithCounts}
     client:only="react"
   />
-
   <div class="container">
+    <h1
+      class="text-3xl md:text-4xl font-bold mb-15 text-gray-900 dark:text-white"
+    >
+      All Products
+    </h1>
     <div class="row">
       <div class="col-3 hidden lg:block -mt-14">
         <ProductFilters

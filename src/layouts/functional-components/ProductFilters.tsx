@@ -61,7 +61,7 @@ const ProductFilters = ({
   return (
     <div>
       <div>
-        <h5 className="mb-2 lg:text-xl">Select Price Range</h5>
+        {/* <h5 className="mb-2 lg:text-xl">Select Price Range</h5> */}
         <hr className="border-border dark:border-darkmode-border" />
         <div className="pt-4">
           <RangeSlider maxPriceData={maxPriceData} />

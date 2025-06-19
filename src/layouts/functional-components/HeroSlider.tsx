@@ -51,14 +51,14 @@ const HeroSlider = ({ products }: { products: Product[] }) => {
 
                       {/* Main Heading */}
                       <div className="space-y-2 sm:space-y-4">
-                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl font-bold text-white leading-tight sm:leading-tight lg:leading-tight">
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl font-bold text-white leading-tight sm:leading-tight lg:leading-tight">
                           <span className="block opacity-0 animate-fade-in-up" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
                             {item.title?.split(' ').slice(0, Math.ceil(item.title.split(' ').length / 2)).join(' ')}
                           </span>
                           <span className="block bg-gradient-to-r from-teal-400 to-blue-400 bg-clip-text text-transparent opacity-0 animate-fade-in-up" style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}>
                             {item.title?.split(' ').slice(Math.ceil(item.title.split(' ').length / 2)).join(' ')}
                           </span>
-                        </h1>
+                        </h2>
                       </div>
 
                       {/* Description */}
