@@ -79,72 +79,66 @@ const isParentActive = (children: any[]) => {
           <ul class="nav-list">
             {
               menu.main.map((menuItem) => (
-                <li
+                // <li
+                //   class:list={[
+                //     "nav-item",
+                //     menuItem.hasChildren && "has-children",
+                //   ]}
+                // >
+                //   {menuItem.hasChildren ? (
+                //     <>
+                //       <button
+                //         class:list={[
+                //           "nav-link w-full flex justify-between items-center",
+                //           "py-2 px-3",
+                //           isParentActive(menuItem.children) &&
+                //             "text-primary font-medium",
+                //         ]}
+                //         data-submenu-toggle
+                //       >
+                //         {menuItem.name}
+                //         <svg
+                //           class="h-4 w-4 submenu-arrow transition-transform"
+                //           viewBox="0 0 24 24"
+                //           fill="none"
+                //           xmlns="http://www.w3.org/2000/svg"
+                //         >
+                //           <path
+                //             d="M6 9L12 15L18 9"
+                //             stroke="currentColor"
+                //             stroke-width="2"
+                //             stroke-linecap="round"
+                //             stroke-linejoin="round"
+                //           />
+                //         </svg>
+                //       </button>
+
+                //     </>
+                //   ) : (
+                //     <a
+                //       href={menuItem.url}
+                //       class:list={[
+                //         "nav-link block",
+                //         "py-2 px-3 rounded-lg transition-colors",
+                //         isMenuItemActive(menuItem.url) &&
+                //           "text-primary font-medium",
+                //       ]}
+                //     >
+                //       {menuItem.name}
+                //     </a>
+                //   )}
+                <a
+                  href={menuItem.url}
                   class:list={[
-                    "nav-item",
-                    menuItem.hasChildren && "has-children",
+                    "nav-link block",
+                    "py-2 px-3 rounded-lg transition-colors",
+                    isMenuItemActive(menuItem.url) &&
+                      "text-primary font-medium",
                   ]}
                 >
-                  {menuItem.hasChildren ? (
-                    <>
-                      <button
-                        class:list={[
-                          "nav-link w-full flex justify-between items-center",
-                          "py-2 px-3",
-                          isParentActive(menuItem.children) &&
-                            "text-primary font-medium",
-                        ]}
-                        data-submenu-toggle
-                      >
-                        {menuItem.name}
-                        <svg
-                          class="h-4 w-4 submenu-arrow transition-transform"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M6 9L12 15L18 9"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          />
-                        </svg>
-                      </button>
-
-                      <ul class="submenu hidden pl-4 mt-2 space-y-2 bg-white dark:bg-dark rounded-md shadow py-4">
-                        {menuItem.children.map((child) => (
-                          <li>
-                            <a
-                              href={child.url}
-                              class:list={[
-                                "nav-dropdown-link block",
-                                "py-2 px-3",
-                                isMenuItemActive(child.url) &&
-                                  "text-primary font-medium",
-                              ]}
-                            >
-                              {child.name}
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
-                    </>
-                  ) : (
-                    <a
-                      href={menuItem.url}
-                      class:list={[
-                        "nav-link block",
-                        "py-2 px-3 rounded-lg transition-colors",
-                        isMenuItemActive(menuItem.url) &&
-                          "text-primary font-medium",
-                      ]}
-                    >
-                      {menuItem.name}
-                    </a>
-                  )}
-                </li>
+                  {menuItem.name}
+                </a>
+                // </li>
               ))
             }
 
@@ -224,71 +218,73 @@ const isParentActive = (children: any[]) => {
           <ul class="nav-list">
             {
               menu.main.map((menuItem) => (
-                <li
+                // <li
+                //   class:list={[
+                //     "nav-item",
+                //     menuItem.hasChildren && "has-children",
+                //   ]}
+                // >
+                //   {menuItem.hasChildren ? (
+                //     <>
+                //       <button
+                //         class:list={[
+                //           "nav-link w-full flex justify-between items-center",
+                //           "py-2 px-3 rounded-lg transition-colors",
+                //           isParentActive(menuItem.children) &&
+                //             "text-primary font-medium",
+                //         ]}
+                //         data-submenu-toggle
+                //       >
+                //         {menuItem.name}
+                //         <svg
+                //           class="h-4 w-4 submenu-arrow transition-transform"
+                //           viewBox="0 0 24 24"
+                //           fill="none"
+                //           xmlns="http://www.w3.org/2000/svg"
+                //         >
+                //           <path
+                //             d="M6 9L12 15L18 9"
+                //             stroke="currentColor"
+                //             stroke-width="2"
+                //             stroke-linecap="round"
+                //             stroke-linejoin="round"
+                //           />
+                //         </svg>
+                //       </button>
+                //       <ul class="submenu hidden pl-4 mt-2 space-y-2 bg-white dark:bg-dark rounded-md shadow py-4">
+                //         {menuItem.children.map((child) => (
+                //           <li>
+                //             <a
+                //               href={child.url}
+                //               class:list={[
+                //                 "nav-dropdown-link block",
+                //                 "py-2 px-3 rounded-lg transition-colors",
+                //                 isMenuItemActive(child.url) &&
+                //                   "text-primary font-medium",
+                //               ]}
+                //             >
+                //               {child.name}
+                //             </a>
+                //           </li>
+                //         ))}
+                //       </ul>
+                //     </>
+                //   ) : (
+
+                //   )}
+                // </li>
+
+                <a
+                  href={menuItem.url}
                   class:list={[
-                    "nav-item",
-                    menuItem.hasChildren && "has-children",
+                    "nav-link block",
+                    "py-2 px-3rounded-lg transition-colors",
+                    isMenuItemActive(menuItem.url) &&
+                      "text-primary font-medium",
                   ]}
                 >
-                  {menuItem.hasChildren ? (
-                    <>
-                      <button
-                        class:list={[
-                          "nav-link w-full flex justify-between items-center",
-                          "py-2 px-3 rounded-lg transition-colors",
-                          isParentActive(menuItem.children) &&
-                            "text-primary font-medium",
-                        ]}
-                        data-submenu-toggle
-                      >
-                        {menuItem.name}
-                        <svg
-                          class="h-4 w-4 submenu-arrow transition-transform"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M6 9L12 15L18 9"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          />
-                        </svg>
-                      </button>
-                      <ul class="submenu hidden pl-4 mt-2 space-y-2 bg-white dark:bg-dark rounded-md shadow py-4">
-                        {menuItem.children.map((child) => (
-                          <li>
-                            <a
-                              href={child.url}
-                              class:list={[
-                                "nav-dropdown-link block",
-                                "py-2 px-3 rounded-lg transition-colors",
-                                isMenuItemActive(child.url) &&
-                                  "text-primary font-medium",
-                              ]}
-                            >
-                              {child.name}
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
-                    </>
-                  ) : (
-                    <a
-                      href={menuItem.url}
-                      class:list={[
-                        "nav-link block",
-                        "py-2 px-3rounded-lg transition-colors",
-                        isMenuItemActive(menuItem.url) &&
-                          "text-primary font-medium",
-                      ]}
-                    >
-                      {menuItem.name}
-                    </a>
-                  )}
-                </li>
+                  {menuItem.name}
+                </a>
               ))
             }
           </ul>

@@ -1,6 +1,5 @@
 ---
 import ImageMod from "@/components/ImageMod.astro";
-import Accordion from "@/functional-components/Accordion";
 import Testimonials from "@/functional-components/Testimonials";
 import Base from "@/layouts/Base.astro";
 import { markdownify } from "@/lib/utils/textConverter";
@@ -17,10 +16,6 @@ const {
   description,
   image,
   about_us,
-  faq_section_title,
-  button,
-  faq_section_subtitle,
-  faqs,
   testimonials_section_enable,
   testimonials_section_title,
   testimonials,
@@ -164,37 +159,6 @@ const {
       </div>
     </div>
   </section>
-
-  <section>
-    <div class="container">
-      <div
-        class="bg-light px-7 lg:px-32 py-20 dark:bg-darkmode-light mb-14 xl:mb-28 rounded-md"
-      >
-        <div class="row">
-          <div class="md:col-5 mx-auto space-y-5 mb-10 md:mb-0">
-            <h1 set:html={markdownify(faq_section_title!)} />
-            <p
-              set:html={markdownify(faq_section_subtitle!)}
-              class="md:text-lg"
-            />
-
-            {
-              button?.enable && (
-                <a
-                  class="btn btn-sm md:btn-lg btn-primary font-medium"
-                  href={button.link}
-                >
-                  {button.label}
-                </a>
-              )
-            }
-          </div>
-
-          <div class="md:col-7">
-            <Accordion client:load faqs={faqs} />
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- FAQ section removed -->
+  <!-- You can add a contact information section here if needed -->
 </Base>
