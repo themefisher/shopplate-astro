@@ -20,9 +20,9 @@ const { data } = call_to_action;
             <div class="mb-10 md:mb-0 lg:col-6 xl:col-6 mx-auto text-center order-2 lg:order-0">
               <p
                 set:html={markdownify(data.sub_title)}
-                class="md:text-lg text-text-dark dark:text-darkmode-text-dark font-bold"
+                class="md:text-[24px] text-text-dark dark:text-darkmode-text-dark font-bold"
               />
-              <h2 set:html={markdownify(data.title)} class="my-2 h1" />
+              <h2 set:html={markdownify(data.title)} class="my-2 h1 md:text-[36px]" />
               <p
                 set:html={markdownify(data.description)}
                 class="mb-6 md:text-lg"
@@ -38,7 +38,7 @@ const { data } = call_to_action;
               )}
             </div>
 
-            {/* <div class="mx-auto lg:col-5 mb-6 lg:mb-0">
+            <div class="mx-auto lg:col-5 mb-6 lg:mb-0">
               <ImageMod
                 src={data.image}
                 width={543}
@@ -46,7 +46,7 @@ const { data } = call_to_action;
                 alt="cta-image"
                 class="mx-auto"
               />
-            </div> */}
+            </div>
           </div>
         </div>
       </div>

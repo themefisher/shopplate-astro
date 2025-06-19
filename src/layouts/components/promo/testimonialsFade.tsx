@@ -70,8 +70,8 @@ export default function TestimonialsGrid({
       
       {/* Testimonials section */}
       <div className="container mx-auto px-4 py-8 mb-12">
-        <h3 className="text-2xl font-bold mt-4 mb-2">{data.section.title}</h3> 
-        <p className="mb-8 max-w-xl">{data.section.description}</p>
+        <h3 className="text-4xl font-bold mb-8 mb-2 text-center py-4 ">{data.section.title}</h3> 
+        {/* <p className="mb-8 max-w-xl">{data.section.description}</p> */}
         
         {/* Testimonials grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -162,7 +162,7 @@ export const sampleTestimonialsData: TestimonialsData = {
     {
       id: 6,
       rating: 5,
-      content: "I always felt like I could do anything. That's the main thing people are controlled by! Thoughts- their perception of themselves! They're slowed down by their perception of themselves. If you're taught you can't do anything, you won't do anything. I was taught I could do everything.",
+      content: "Great shop, fast delivery! ",
       author: {
         name: "Sofia G.",
         avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1760&q=80"
