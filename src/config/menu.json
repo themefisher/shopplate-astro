@@ -32,10 +32,9 @@
       "name": "Contact",
       "url": "/contact"
     }
-  ],
-  "footerCopyright": [
+  ],  "footerCopyright": [
     {
-      "name": "Privacy & Policy",
+      "name": "Privacy Policy",
       "url": "/privacy-policy"
     },
     {
