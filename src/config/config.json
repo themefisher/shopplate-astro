@@ -1,7 +1,7 @@
 {
   "site": {
     "title": "Matter, Thread, Zigbee & HomeKit Hubs | Control Matter Enabled Devices",
-    "base_url": "https://shop.matterhubs.com/",
+    "base_url": "https://dev.matterhubs.com/",
     "base_path": "/",
     "trailing_slash": false,
     "favicon": "/images/favi.png",

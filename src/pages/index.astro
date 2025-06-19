@@ -1,21 +1,29 @@
 ---
 import FeaturedProducts from "@/components/FeaturedProducts.astro";
-import TestimonialsFade,{sampleTestimonialsData} from "@/components/promo/testimonialsFade";
+import TestimonialsFade, {
+  sampleTestimonialsData,
+} from "@/components/promo/testimonialsFade";
 import config from "@/config/config.json";
+import HomeFaqAccordion from "@/functional-components/HomeFaqAccordion";
 import CollectionsSlider from "@/functional-components/CollectionsSlider";
 import Base from "@/layouts/Base.astro";
 import { getCollectionProducts, getCollectionsByIds } from "@/lib/shopify";
 import CallToAction from "@/partials/CallToAction.astro";
 import HeroSlider from "src/layouts/functional-components/HeroSlider";
-import { Truck, Package, User, CreditCard } from 'lucide-react';
+import { Truck, Package, User, CreditCard } from "lucide-react";
+import { getEntry } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+// Get About page data for FAQs
+const about = (await getEntry("about", "-index")) as CollectionEntry<"about">;
 const { collections } = config.shopify;
 
 // Define the specific collection IDs you want to show
 const SPECIFIC_COLLECTION_IDS = [
-  'gid://shopify/Collection/294462521401', // Replace with your actual collection IDs
-  'gid://shopify/Collection/294462455865',
-  'gid://shopify/Collection/294460260409',
-   'gid://shopify/Collection/294460227641'
+  "gid://shopify/Collection/294462521401", // Replace with your actual collection IDs
+  "gid://shopify/Collection/294462455865",
+  "gid://shopify/Collection/294460260409",
+  "gid://shopify/Collection/294460227641",
 ];
 
 // Fetch slider images for the HeroSlider
@@ -39,125 +47,198 @@ const { products: bestProducts } = await getCollectionProducts({
 });
 ---
 
-<Base>  <!-- Modern Hero Section -->
+<Base>
+  <!-- Modern Hero Section -->
   <section class="relative overflow-hidden">
     <div class="container-lg">
       <div class="relative">
         <!-- Hero Background Pattern -->
-        <div class="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900"></div>
-        
+        <div
+          class="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900"
+        >
+        </div>
+
         <!-- Floating Elements -->
-        <div class="absolute top-10 right-10 w-20 h-20 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full opacity-20 animate-pulse"></div>
-        <div class="absolute bottom-10 left-10 w-16 h-16 bg-gradient-to-br from-teal-400 to-green-500 rounded-full opacity-30 animate-bounce"></div>
-        
+        <div
+          class="absolute top-10 right-10 w-20 h-20 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full opacity-20 animate-pulse"
+        >
+        </div>
+        <div
+          class="absolute bottom-10 left-10 w-16 h-16 bg-gradient-to-br from-teal-400 to-green-500 rounded-full opacity-30 animate-bounce"
+        >
+        </div>
+
         <!-- Hero Slider with enhanced container -->
-        <div class="relative z-10 rounded-3xl overflow-hidden bg-white/10 backdrop-blur-sm border border-white/20 mb-8">
+        <div
+          class="relative z-10 rounded-3xl overflow-hidden bg-white/10 backdrop-blur-sm border border-white/20 mb-8"
+        >
           <HeroSlider products={heroProducts} client:load />
         </div>
       </div>
     </div>
   </section>
 
-<!-- Enhanced Features Section -->
-<section class="relative py-20">
-  <div class="absolute inset-0 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800"></div>
-  
-  <!-- Decorative background -->
-  <div class="absolute inset-0 opacity-30">
-    <div class="absolute top-0 left-1/4 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
-    <div class="absolute top-1/3 right-1/4 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-2000"></div>
-    <div class="absolute bottom-0 left-1/3 w-72 h-72 bg-teal-200 rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-4000"></div>
-  </div>
+  <!-- Enhanced Features Section -->
+  <section class="relative py-20">
+    <div
+      class="absolute inset-0 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800"
+    >
+    </div>
 
-  <div class="relative z-10 max-w-7xl mx-auto px-4">
-    <!-- Section Header -->
-    <div class="text-center mb-16">
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-        Why Choose <span class="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">Our Store</span>
-      </h2>
-      <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-        Experience exceptional service with benefits designed to make your shopping journey seamless and rewarding
+    <!-- Decorative background -->
+    <div class="absolute inset-0 opacity-30">
+      <div
+        class="absolute top-0 left-1/4 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl animate-pulse"
+      >
+      </div>
+      <div
+        class="absolute top-1/3 right-1/4 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-2000"
+      >
+      </div>
+      <div
+        class="absolute bottom-0 left-1/3 w-72 h-72 bg-teal-200 rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-4000"
+      >
+      </div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4">
+      <!-- Section Header -->
+      <div class="text-center mb-16">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4"
+        >
+          Why Choose <span
+            class="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent"
+            >Our Store</span
+          >
+        </h2>
+        <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          Experience exceptional service with benefits designed to make your
+          shopping journey seamless and rewarding
+        </p>
+      </div>
+
+      <!-- Features Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* Fast Delivery */}
+        <div
+          class="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-8 text-center border border-gray-200/50 dark:border-gray-700/50 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300 hover:-translate-y-2"
+        >
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-teal-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          >
+          </div>
+          <div class="relative z-10">
+            <div
+              class="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300"
+            >
+              <Truck className="h-8 w-8 text-white" />
+            </div>
+            <h3 class="font-bold text-xl mb-4 text-gray-900 dark:text-white">
+              Fast Delivery
+            </h3>
+            <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+              Lightning-fast delivery right to your doorstep with real-time
+              tracking and secure handling.
+            </p>
+          </div>
+        </div>
+
+        {/* 60 days return */}
+        <div
+          class="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-8 text-center border border-gray-200/50 dark:border-gray-700/50 hover:shadow-xl hover:shadow-green-500/10 transition-all duration-300 hover:-translate-y-2"
+        >
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-green-500/5 to-emerald-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          >
+          </div>
+          <div class="relative z-10">
+            <div
+              class="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300"
+            >
+              <Package className="h-8 w-8 text-white" />
+            </div>
+            <h3 class="font-bold text-xl mb-4 text-gray-900 dark:text-white">
+              60 Days Return
+            </h3>
+            <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+              Hassle-free returns up to 60 days with our commitment to your
+              complete satisfaction.
+            </p>
+          </div>
+        </div>
+
+        {/* Help Center */}
+        <div
+          class="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-8 text-center border border-gray-200/50 dark:border-gray-700/50 hover:shadow-xl hover:shadow-purple-500/10 transition-all duration-300 hover:-translate-y-2"
+        >
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-violet-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          >
+          </div>
+          <div class="relative z-10">
+            <div
+              class="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300"
+            >
+              <User className="h-8 w-8 text-white" />
+            </div>
+            <h3 class="font-bold text-xl mb-4 text-gray-900 dark:text-white">
+              Help Center
+            </h3>
+            <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+              24/7 expert support team ready to assist you for a smooth shopping
+              experience.
+            </p>
+          </div>
+        </div>
+
+        {/* Secure Online Payment */}
+        <div
+          class="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-8 text-center border border-gray-200/50 dark:border-gray-700/50 hover:shadow-xl hover:shadow-teal-500/10 transition-all duration-300 hover:-translate-y-2"
+        >
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-teal-500/5 to-cyan-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          >
+          </div>
+          <div class="relative z-10">
+            <div
+              class="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-teal-500 to-teal-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300"
+            >
+              <CreditCard className="h-8 w-8 text-white" />
+            </div>
+            <h3 class="font-bold text-xl mb-4 text-gray-900 dark:text-white">
+              Secure Payment
+            </h3>
+            <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+              Bank-level security with world's most trusted payment methods and
+              fraud protection.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div
+      class="flex flex-col items-center justify-center w-full bg-slate-900 text-white py-12 px-4"
+    >
+      <h1 class="text-3xl text-white font-bold mb-4 text-center">
+        HomeKit No Longer Requires Matter Hubs!
+      </h1>
+
+      <p class="text-center max-w-2xl mb-8">
+        Exciting news for our Apple users! iOS 18 does not require a Matter Hub
+        or a Thread Boarder router for Matter compatibility and connectivity!
+        (Please note that it only works with iPhone 15 or above).
       </p>
+      <a
+        href="https://blog.matterhubs.com/ios-18-matter-updates/"
+        class="border border-teal-400 text-teal-400 hover:bg-teal-400/10 rounded-full px-6 py-2 transition-colors"
+      >
+        Read more about
+      </a>
     </div>
-
-    <!-- Features Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-      
-      {/* Fast Delivery */}
-      <div class="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-8 text-center border border-gray-200/50 dark:border-gray-700/50 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300 hover:-translate-y-2">
-        <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-teal-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        <div class="relative z-10">
-          <div class="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-            <Truck className="h-8 w-8 text-white" />
-          </div>
-          <h3 class="font-bold text-xl mb-4 text-gray-900 dark:text-white">Fast Delivery</h3>
-          <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-            Lightning-fast delivery right to your doorstep with real-time tracking and secure handling.
-          </p>
-        </div>
-      </div>
-      
-      {/* 60 days return */}
-      <div class="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-8 text-center border border-gray-200/50 dark:border-gray-700/50 hover:shadow-xl hover:shadow-green-500/10 transition-all duration-300 hover:-translate-y-2">
-        <div class="absolute inset-0 bg-gradient-to-br from-green-500/5 to-emerald-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        <div class="relative z-10">
-          <div class="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-            <Package className="h-8 w-8 text-white" />
-          </div>
-          <h3 class="font-bold text-xl mb-4 text-gray-900 dark:text-white">60 Days Return</h3>
-          <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-            Hassle-free returns up to 60 days with our commitment to your complete satisfaction.
-          </p>
-        </div>
-      </div>
-      
-      {/* Help Center */}
-      <div class="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-8 text-center border border-gray-200/50 dark:border-gray-700/50 hover:shadow-xl hover:shadow-purple-500/10 transition-all duration-300 hover:-translate-y-2">
-        <div class="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-violet-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        <div class="relative z-10">
-          <div class="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-            <User className="h-8 w-8 text-white" />
-          </div>
-          <h3 class="font-bold text-xl mb-4 text-gray-900 dark:text-white">Help Center</h3>
-          <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-            24/7 expert support team ready to assist you for a smooth shopping experience.
-          </p>
-        </div>
-      </div>
-      
-      {/* Secure Online Payment */}
-      <div class="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-8 text-center border border-gray-200/50 dark:border-gray-700/50 hover:shadow-xl hover:shadow-teal-500/10 transition-all duration-300 hover:-translate-y-2">
-        <div class="absolute inset-0 bg-gradient-to-br from-teal-500/5 to-cyan-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        <div class="relative z-10">
-          <div class="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-teal-500 to-teal-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-            <CreditCard className="h-8 w-8 text-white" />
-          </div>
-          <h3 class="font-bold text-xl mb-4 text-gray-900 dark:text-white">Secure Payment</h3>
-          <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-            Bank-level security with world's most trusted payment methods and fraud protection.
-          </p>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-</section>
-<section>
-  <div class="flex flex-col items-center justify-center w-full bg-slate-900 text-white py-12 px-4 ">
-    <h1 class="text-3xl text-white font-bold mb-4 text-center">HomeKit No Longer Requires Matter Hubs!</h1>
-    
-    <p class="text-center max-w-2xl mb-8">
-      Exciting news for our Apple users! iOS 18 does not require a Matter Hub or a Thread Boarder 
-      router for Matter compatibility and connectivity! (Please note that it only works with iPhone 15 
-      or above).
-    </p>
-    <a href="https://blog.matterhubs.com/ios-18-matter-updates/" class="border border-teal-400 text-teal-400 hover:bg-teal-400/10 rounded-full px-6 py-2 transition-colors">
-      Read more about
-    </a>
-    
-  </div>
-</section>
-
+  </section>
 
   {/* category section */}
   <section class="section bg-gradient my-20">
@@ -171,7 +252,7 @@ const { products: bestProducts } = await getCollectionProducts({
 
   {/* Featured Products section */}
   <section>
-    <div class="container ">
+    <div class="container">
       <div class="text-center mb-6 md:mb-14">
         <h2 class="mb-2">Featured Products</h2>
         <p class="md:h5">Explore Today's Featured Picks!</p>
@@ -182,20 +263,98 @@ const { products: bestProducts } = await getCollectionProducts({
 
   <CallToAction />
 
- {/* Featured Products section */}
- <section>
-  <div class="container ">
-    <div class="text-center mb-6 md:mb-14">
-      <h2 class="mb-2">Best Selling Products</h2>
-      <p class="md:h5">Explore Today's Featured Picks!</p>
+  {/* Featured Products section */}
+  <section>
+    <div class="container">
+      <div class="text-center mb-6 md:mb-14">
+        <h2 class="mb-2">Best Selling Products</h2>
+        <p class="md:h5">Explore Today's Featured Picks!</p>
+      </div>
+      <FeaturedProducts products={bestProducts} />
     </div>
-    <FeaturedProducts products={bestProducts} />
-  </div>
-</section>
+  </section>
+
+  {/* FAQ Section */}
+  <section
+    class=" my-10 section bg-gradient-to-b from-blue-50 to-white dark:from-gray-900 dark:to-gray-800 py-20"
+  >
+    <div class="container">
+      <div
+        class="text-center mb-12 animate-fade-in "
+        style="--animation-delay: 0.3s;"
+      >
+      
+        <h2
+          class="font-bold text-3xl md:text-4xl mb-3 text-black inline-block  bg-clip-text"
+        >
+          Frequently Asked Questions
+        </h2>
+        <div
+          class="h-1 w-20 bg-gradient-to-r rounded-full mx-auto mb-5"
+        >
+        </div>
+        <p
+          class="text-text-light dark:text-darkmode-text-light max-w-2xl mx-auto"
+        >
+          Have questions about Matter protocol and smart home devices? Find
+          quick answers to common questions here.
+        </p>
+      </div>
+
+      <div class="flex flex-col md:flex-row gap-10 items-start">
+        <div
+          class="md:w-1/3 p-8 bg-white dark:bg-darkmode-theme-light rounded-xl shadow-lg transform transition-all hover:scale-105 border-t-4 border-[#15B0A4] animate-fade-in-up"
+          style="--animation-delay: 0.5s;"
+        >
+          
+          <h3 class="text-2xl font-bold mb-4 text-gray-800 dark:text-white">
+            Need More Help?
+          </h3>
+          <div
+            class="h-1 w-12 bg-[#15B0A4] rounded-full mb-5"
+          >
+          </div>
+          <p
+            class="mb-8 text-text-light dark:text-darkmode-text-light leading-relaxed"
+          >
+            Can't find what you're looking for? Our expert support team is ready
+            to assist with any questions about Matter devices, smart home setup,
+            or compatibility issues.
+          </p>
+          <a
+            href="/contact"
+            class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-[#15B0A4] shadow-md hover:shadow-xl transition-all duration-300"
+          >
+            Contact Our Team
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 ml-2 animate-pulse"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </a>
+        </div>
+
+        <div
+          class="md:w-2/3 bg-white dark:bg-darkmode-theme-light rounded-xl shadow-xl p-8 border border-gray-100 dark:border-gray-700 animate-fade-in-up"
+          style="--animation-delay: 0.7s;"
+        >
+          <HomeFaqAccordion client:load faqs={about.data.faqs} />
+        </div>
+      </div>
+    </div>
+  </section>
 
   <div class="mt-5 mb-10">
-    <TestimonialsFade 
-      pageHeaderBgImg={"https://images.unsplash.com/photo-1519642918688-7e43b19245d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2676&q=80"} 
+    <TestimonialsFade
+      pageHeaderBgImg={"https://images.unsplash.com/photo-1519642918688-7e43b19245d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2676&q=80"}
       pageHeaderMinVh="50vh"
       data={sampleTestimonialsData}
     />

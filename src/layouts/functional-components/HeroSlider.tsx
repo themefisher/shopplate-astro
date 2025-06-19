@@ -78,15 +78,7 @@ const HeroSlider = ({ products }: { products: Product[] }) => {
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                             </svg>
                             <div className="absolute inset-0 bg-gradient-to-r from-teal-600 to-blue-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                          </a>
-                        )}
-                        
-                        <button className="group inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 border-2 border-white/30 text-white font-semibold rounded-full backdrop-blur-sm hover:bg-white/10 transition-all duration-300 text-sm sm:text-base">
-                          <svg className="w-4 h-4 sm:w-5 sm:h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M8 5v14l11-7z"/>
-                          </svg>
-                          Watch Demo
-                        </button>
+                          </a>                        )}
                       </div>
 
                       {/* Stats/Features */}

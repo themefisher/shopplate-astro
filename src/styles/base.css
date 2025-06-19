@@ -1,5 +1,6 @@
 html {
   @apply text-base-sm md:text-base;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -60,4 +61,22 @@ blockquote > p {
 /* In your CSS file */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+/* Add a custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #3b82f6, #10b981);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #2563eb, #059669);
 }

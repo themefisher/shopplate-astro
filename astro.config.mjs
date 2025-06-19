@@ -10,6 +10,7 @@ import config from "./src/config/config.json";
 import node from "@astrojs/node";
 
 // https://astro.build/config
+
 export default defineConfig({
   site: config.site.base_url || "http://dev.matterhubs.com",
   base: config.site.base_path || "/",
@@ -23,7 +24,7 @@ export default defineConfig({
     plugins: [tailwindcss()],
     envPrefix: ["PUBLIC_", "JUDGEME_"],
   },
-
+ 
   integrations: [
     react(),
     sitemap(),

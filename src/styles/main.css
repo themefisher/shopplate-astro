@@ -8,6 +8,7 @@
 
 @import "./safe.css";
 @import "./utilities.css";
+@import "./animations.css";
 
 @layer base {
   @import "./base.css";

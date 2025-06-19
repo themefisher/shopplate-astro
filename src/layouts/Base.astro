@@ -33,10 +33,11 @@ export interface Props {
   image?: string;
   noindex?: boolean;
   canonical?: string;
+  product?: any;
 }
 
 // destructure frontmatter
-const { title, meta_title, description, image, noindex, canonical } =
+const { title, meta_title, description, image, noindex, canonical,product } =
   Astro.props;
 ---
 
@@ -101,6 +102,32 @@ const { title, meta_title, description, image, noindex, canonical } =
 
     <!-- noindex robots -->
     {noindex && <meta name="robots" content="noindex,nofollow" />}
+
+    {product && (
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Product",
+          "name": product.title,
+          "image": product.images?.map((img) => img.url),
+          "description": product.description,
+          "sku": product.variants?.[0]?.sku ?? "",
+          "brand": {
+            "@type": "Brand",
+            "name": "matterhubs" // You can hardcode or pass via props
+          },
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": product.priceRange?.minVariantPrice?.currencyCode ?? "USD",
+            "price": product.priceRange?.minVariantPrice?.amount ?? "0.00",
+            "availability": product.availableForSale
+              ? "https://schema.org/InStock"
+              : "https://schema.org/OutOfStock",
+            "url": `${config.site.base_url}/products/${product.handle}`
+          }
+        })}
+      </script>
+    )}
 
     <!-- meta-description -->
     <meta

@@ -17,7 +17,7 @@ import data from '../../../public/data.json';
 import JudgeMeReviews from "@/components/JudgeMeReviews.astro";
 const { slug } = Astro.params;
 const product = await getProduct(slug as string);
-
+const canonicalUrl = `https://matterhubs.com/products/${slug}`;
 const paymentSection = (await getEntry(
   "paymentSection",
   "payments-and-delivery"
@@ -55,8 +55,7 @@ const apiToken = import.meta.env.JUDGEME_API_TOKEN;
 // console.log("product id "+ product.id);
 
 ---
-
-<Base>
+<Base canonical={canonicalUrl} product={product}>
   <section class="md:section-sm">
     <div class="container">
       <div class="row justify-center">
