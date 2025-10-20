@@ -1,15 +1,16 @@
 ---
 import config from "@/config/config.json";
 import Base from "@/layouts/Base.astro";
+import { getListPage } from "@/lib/contentParser.astro";
 import { markdownify } from "@/lib/utils/textConverter";
 import PageHeader from "@/partials/PageHeader.astro";
-import type { CollectionEntry } from "astro:content";
-import { getEntry } from "astro:content";
 
-const contact = (await getEntry(
-  "contact",
-  "-index"
-)) as CollectionEntry<"contact">;
+const contact = await getListPage("contact", "-index");
+
+if (contact.data.draft) {
+  return Astro.redirect("/404");
+}
+
 const { contact_form_action }: { contact_form_action: string } = config.params;
 const { title, meta_title, description, image, contact_meta } = contact.data;
 ---

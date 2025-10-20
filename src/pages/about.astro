@@ -3,13 +3,15 @@ import ImageMod from "@/components/ImageMod.astro";
 import Accordion from "@/functional-components/Accordion";
 import Testimonials from "@/functional-components/Testimonials";
 import Base from "@/layouts/Base.astro";
+import { getListPage } from "@/lib/contentParser.astro";
 import { markdownify } from "@/lib/utils/textConverter";
 import PageHeader from "@/partials/PageHeader.astro";
-import type { CollectionEntry } from "astro:content";
-import { getEntry } from "astro:content";
 import { FaBoxOpen, FaHeadset, FaRegCheckCircle } from "react-icons/fa";
 
-const about = (await getEntry("about", "-index")) as CollectionEntry<"about">;
+const about = await getListPage("about", "-index");
+if (about.data.draft) {
+  return Astro.redirect("/404");
+}
 
 const {
   title,

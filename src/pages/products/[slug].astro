@@ -8,17 +8,17 @@ import Tabs from "@/functional-components/product/Tabs";
 import { VariantSelector } from "@/functional-components/product/VariantSelector";
 import SocialShare from "@/functional-components/SocialShare";
 import Base from "@/layouts/Base.astro";
+import { getListPage } from "@/lib/contentParser.astro";
 import { getProduct, getProductRecommendations } from "@/lib/shopify";
-import type { CollectionEntry } from "astro:content";
-import { getEntry } from "astro:content";
 
 const { slug } = Astro.params;
 const product = await getProduct(slug as string);
 
-const paymentSection = (await getEntry(
+const paymentSection = await getListPage(
   "paymentSection",
   "payments-and-delivery"
-)) as CollectionEntry<"paymentSection">;
+);
+
 const { payment_methods, estimated_delivery } = paymentSection.data;
 
 if (!product) {

@@ -8,9 +8,8 @@ export const contactCollection = defineCollection({
     meta_title: z.string().optional(),
     description: z.string(),
     image: z.string().optional(),
-    draft: z.boolean().optional(),
+    draft: z.boolean(),
 
-    // Contact options section with a list of contact details
     contact_meta: z
       .array(
         z.object({

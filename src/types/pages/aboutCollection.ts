@@ -8,7 +8,7 @@ export const aboutCollection = defineCollection({
     meta_title: z.string().optional(),
     description: z.string().optional(),
     image: z.string().optional(),
-    draft: z.boolean().optional(),
+    draft: z.boolean(),
 
     // About Us section with a list of items
     about_us: z.array(
