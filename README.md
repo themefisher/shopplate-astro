@@ -13,13 +13,13 @@
  <a href="https://github.com/withastro/astro/releases/tag/astro@5.14.6" alt="Contributors">
     <img src="https://img.shields.io/static/v1?label=ASTRO&message=5.14.6&color=BC52EE&logo=astro" />
 </a>
-  <a href="https://github.com/zeon.studio/storeplate-astro/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/zeon.studio/storeplate-astro" alt="license"></a>
+  <a href="https://github.com/zeon.studio/storeplate/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/zeon.studio/storeplate" alt="license"></a>
 
-  <img src="https://img.shields.io/github/languages/code-size/zeon.studio/storeplate-astro" alt="code size">
+  <img src="https://img.shields.io/github/languages/code-size/zeon.studio/storeplate" alt="code size">
 
   <a href="https://github.com/zeon.studio/storeplate/graphs/contributors">
-    <img src="https://img.shields.io/github/contributors/zeon.studio/storeplate-astro" alt="contributors"></a>
+    <img src="https://img.shields.io/github/contributors/zeon.studio/storeplate" alt="contributors"></a>
 </p>
 
 ## 📌 Key Features
