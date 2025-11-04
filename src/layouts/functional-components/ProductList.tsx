@@ -156,7 +156,7 @@ const ProductList = ({
               <div className="row">
                 <div className="col-4">
                   <img
-                    src={featuredImage?.url || "/images/product_image404.jpg"}
+                    src={featuredImage?.url || "/images/product-placeholder.jpg"}
                     // fallback={'/images/category-1.png'}
                     width={312}
                     height={269}

@@ -1,7 +1,7 @@
 {
   "site": {
-    "title": "Shopplate",
-    "base_url": "https://shopplate.vercel.app/",
+    "title": "Storeplate",
+    "base_url": "https://storeplate.vercel.app/",
     "base_path": "/",
     "trailing_slash": false,
     "favicon": "/images/favicon.png",
@@ -9,7 +9,7 @@
     "logo_darkmode": "/images/logo-darkmode.png",
     "logo_width": "150",
     "logo_height": "33",
-    "logo_text": "Shopplate"
+    "logo_text": "Storeplate"
   },
 
   "settings": {
@@ -22,13 +22,13 @@
 
   "params": {
     "contact_form_action": "#",
-    "copyright": "Designed And Developed by [Themefisher](https://themefisher.com/)"
+    "copyright": "Designed And Developed by [Zeon Studio](https://zeon.studio)"
   },
 
   "navigation_button": {
     "enable": true,
     "label": "Get Started",
-    "link": "https://github.com/themefisher/shopplate"
+    "link": "https://github.com/zeon-studio/storeplate"
   },
 
   "google_tag_manager": {
@@ -37,7 +37,7 @@
   },
 
   "metadata": {
-    "meta_author": "Themefisher",
+    "meta_author": "zeon.studio",
     "meta_image": "/images/og-image.png",
     "meta_description": "Shopify Storefront Boilerplate"
   },

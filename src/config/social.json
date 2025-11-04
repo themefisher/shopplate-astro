@@ -2,23 +2,23 @@
   "main": [
     {
       "name": "facebook",
-      "icon": "FaFacebookF",
-      "link": "https://www.facebook.com/themefisher"
+      "icon": "FaFacebook",
+      "link": "https://www.facebook.com/"
     },
     {
       "name": "x",
       "icon": "FaXTwitter",
-      "link": "https://x.com/themefisher"
-    },
-    {
-      "name": "linkedin",
-      "icon": "FaLinkedinIn",
-      "link": "https://bd.linkedin.com/company/themefisher"
+      "link": "https://x.com/"
     },
     {
       "name": "github",
       "icon": "FaGithub",
-      "link": "https://github.com/themefisher/shopplate"
+      "link": "https://www.github.com/"
+    },
+    {
+      "name": "linkedin",
+      "icon": "FaLinkedin",
+      "link": "https://www.linkedin.com/"
     }
   ]
 }
