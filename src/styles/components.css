@@ -208,6 +208,11 @@
   @apply rounded-full p-2 text-text-dark dark:text-darkmode-text-dark;
 }
 
+/* footer items */
+.footer-link {
+  @apply text-sm md:text-base font-medium transition text-text-light hover:text-text-dark dark:text-darkmode-text dark:hover:text-darkmode-primary;
+}
+
 /* content style */
 .content {
   @apply prose max-w-none;
@@ -218,7 +223,7 @@
   @apply prose-img:max-w-full prose-img:rounded;
   @apply prose-hr:border-border prose-hr:dark:border-darkmode-border;
   @apply prose-p:text-base prose-p:text-text prose-p:dark:text-darkmode-text;
-  @apply prose-blockquote:rounded-lg prose-blockquote:border prose-blockquote:border-l-[10px] prose-blockquote:border-primary prose-blockquote:bg-light prose-blockquote:px-8 prose-blockquote:py-10 prose-blockquote:font-secondary prose-blockquote:text-2xl prose-blockquote:not-italic prose-blockquote:text-text-dark prose-blockquote:dark:border-darkmode-primary prose-blockquote:dark:bg-darkmode-light prose-blockquote:dark:text-darkmode-text-light;
+  @apply prose-blockquote:rounded-lg prose-blockquote:border prose-blockquote:border-l-10 prose-blockquote:border-primary prose-blockquote:bg-light prose-blockquote:px-8 prose-blockquote:py-10 prose-blockquote:font-secondary prose-blockquote:text-2xl prose-blockquote:not-italic prose-blockquote:text-text-dark prose-blockquote:dark:border-darkmode-primary prose-blockquote:dark:bg-darkmode-light prose-blockquote:dark:text-darkmode-text-light;
   @apply prose-pre:rounded-lg prose-pre:bg-light prose-pre:dark:bg-darkmode-light;
   @apply prose-code:px-1 prose-code:text-primary prose-code:dark:text-darkmode-primary;
   @apply prose-strong:text-text-dark prose-strong:dark:text-darkmode-text;

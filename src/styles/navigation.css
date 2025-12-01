@@ -76,26 +76,3 @@
     }
   }
 }
-
-/* search style */
-.search-icon {
-  @apply cursor-pointer transition text-white dark:text-black bg-black dark:bg-white;
-}
-
-.search-modal {
-  @apply invisible absolute left-0 right-0 top-0 z-10 h-10 bg-white opacity-0 transition dark:bg-darkmode-light md:h-full;
-  .form-input {
-    @apply h-full w-full border-0 text-lg;
-  }
-  .search-close {
-    @apply absolute right-2 top-1/2 -translate-y-1/2 p-3 text-h4;
-  }
-  &.open {
-    @apply visible opacity-100;
-  }
-}
-
-/* footer items */
-.footer-link {
-  @apply text-sm md:text-base font-medium transition text-text-light hover:text-text-dark dark:text-darkmode-text dark:hover:text-darkmode-primary;
-}
