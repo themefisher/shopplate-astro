@@ -73,7 +73,7 @@
 - To get the tokens needed, create a Shopify partner account.
   ![Screenshot_1](https://raw.githubusercontent.com/tfmurad/images-shopify-commerce/refs/heads/main/1.png)
 
-- Now go to 'stores' and select 'Add store.' Create a development store using the option 'Create development store'.
+- Now go to 'Stores' and select 'Add store.' Create a development store using the option 'Create development store'.
   ![Screenshot_2](https://raw.githubusercontent.com/tfmurad/images-shopify-commerce/refs/heads/main/2.png)
 
 - Click on import products.
@@ -156,16 +156,16 @@ npm run build
 
 ## 🐞 Reporting Issues
 
-We use GitHub Issues as the official bug tracker for this Template. Please Search [existing issues](<https://github.com/zeon> studio/storeplate/issues). It’s possible someone has already reported the same problem.
-If your problem or idea has not been addressed yet, feel free to [open a new issue](<https://github.com/zeon> studio/storeplate/issues).
+We use GitHub Issues as the official bug tracker for this Template. Please Search [existing issues](https://github.com/zeon-studio/storeplate/issues). It’s possible someone has already reported the same problem.
+If your problem or idea has not been addressed yet, feel free to [open a new issue](https://github.com/zeon-studio/storeplate/issues/new).
 
-<!-- licence -->
+<!-- license -->
 
 ## 📝 License
 
 Copyright (c) 2024 - Present, Designed & Developed by [Zeon Studio](https://zeon.studio/)
 
-**Code License:** Released under the [MIT](<https://github.com/zeon> studio/storeplate/blob/main/LICENSE) license.
+**Code License:** Released under the [MIT](https://github.com/zeon-studio/storeplate/blob/main/LICENSE) license.
 
 **Image license:** The images are only for demonstration purposes. They have their license, we don't have permission to share those images.
 
